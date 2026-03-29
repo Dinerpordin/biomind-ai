@@ -574,30 +574,18 @@
     const typing = addMsg('Thinking...', 'bot typing');
 
     try {
-      // Using OpenRouter free model — replace API_KEY below with your key
-      const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-          'HTTP-Referer': window.location.href,
-          'X-Title': 'BioMind AI'
-        },
-        body: JSON.stringify({
-          model: 'mistralai/mistral-7b-instruct:free',
-          messages: [
-            { role: 'system', content: 'You are BioMind AI, a friendly and knowledgeable assistant specialising in biology, neuroscience, psychology, and wellness. Give concise, accurate, educational answers. Use simple language and engaging explanations.' },
-            { role: 'user', content: text }
-          ],
-          max_tokens: 300
-        })
-      });
-      const data = await res.json();
-      const reply = data?.choices?.[0]?.message?.content || 'Sorry, I could not get a response. Please try again!';
-      typing.classList.remove('typing');
-      typing.textContent = reply;
-    } catch (e) {
-      typing.textContent = 'Connection error. Please check your API key or try again later.';
+        // Secure API call through serverless function
+        const res = await fetch('/api/chat', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ question: text })
+            });
+            const data = await res.json();
+            const reply = data?.answer || 'Sorry, I could not get a response. Please try again!';
+            typing.classList.remove('typing');
+            typing.textContent = reply;
+              } catch (e) {
+typing.textContent = 'Connection error. Please check your API key or try again later.';
       typing.classList.remove('typing');
     }
     document.getElementById('chat-messages').scrollTop = 9999;
