@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learn - BioMind</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0a0f1e;--surface:#111827;--card:#1a2234;--border:#2a3550;--accent:#6366f1;--accent2:#22d3ee;--text:#e2e8f0;--muted:#94a3b8;--radius:16px}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2.5rem;background:rgba(17,24,39,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+    .logo{font-family:'Playfair Display',serif;font-size:1.6rem;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    nav ul{list-style:none;display:flex;gap:2rem}
+    nav a{text-decoration:none;color:var(--muted);font-weight:500;font-size:.95rem;transition:color .2s}
+    nav a:hover,nav a.active{color:var(--accent2)}
+    .hero{text-align:center;padding:5rem 1rem 3rem;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(99,102,241,.15),transparent)}
+    .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.5rem);margin-bottom:1rem;background:linear-gradient(135deg,#fff 40%,var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero p{color:var(--muted);font-size:1.1rem;max-width:600px;margin:0 auto 2rem}
+    .wrap{max-width:1100px;margin:0 auto;padding:2rem 2rem 5rem;display:grid;grid-template-columns:2fr 1fr;gap:2rem}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;margin-bottom:1.5rem}
+    .card:last-child{margin-bottom:0}
+    h2{font-size:1.25rem;margin-bottom:1rem;color:var(--text)}
+    .track{margin-bottom:1.6rem;padding:1.2rem;background:rgba(99,102,241,.06);border:1px solid var(--border);border-radius:12px;transition:border-color .2s}
+    .track:hover{border-color:var(--accent)}
+    .track-header{display:flex;align-items:center;gap:.8rem;margin-bottom:.6rem}
+    .track-num{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;flex-shrink:0}
+    .track-title{font-weight:600;font-size:1rem}
+    .track-meta{font-size:.78rem;color:var(--muted);margin-bottom:.6rem}
+    .track ul{list-style:none;font-size:.88rem;color:var(--muted)}
+    .track li{padding:.2rem 0}.track li::before{content:'→ ';color:var(--accent2)}
+    .track-cta{margin-top:.7rem;font-size:.82rem;color:var(--muted)}
+    .track-cta strong{color:var(--accent2)}
+    .tag{display:inline-block;padding:.25rem .7rem;border-radius:999px;border:1px solid var(--border);font-size:.75rem;color:var(--accent2);background:rgba(99,102,241,.12);margin:.2rem}
+    .tip-box{background:rgba(34,211,238,.06);border:1px solid rgba(34,211,238,.2);border-radius:12px;padding:1rem;font-size:.88rem;color:var(--muted);margin-top:1rem}
+    .tip-box strong{color:var(--accent2)}
+    p{font-size:.92rem;line-height:1.7;color:var(--muted);margin-bottom:.7rem}
+    a.cta-link{color:var(--accent2);text-decoration:none;font-weight:600}
+    a.cta-link:hover{text-decoration:underline}
+    footer{text-align:center;padding:2rem;color:var(--muted);font-size:.85rem;border-top:1px solid var(--border)}
+    @media(max-width:900px){.wrap{grid-template-columns:1fr;padding:1.5rem 1.2rem 4rem}nav{padding:1rem 1.2rem}nav ul{gap:1rem}}
+  </style>
+</head>
+<body>
+<nav>
+  <div class="logo">&#x1F9E0; BioMind</div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="explore.html">Explore</a></li>
+    <li><a href="learn.html" class="active">Learn</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+</nav>
+<section class="hero">
+  <h1>Learning Pathways</h1>
+  <p>Structured tracks that take you from the basics of cells and neurons all the way to consciousness, behaviour, and wellbeing.</p>
+</section>
+<main class="wrap">
+  <section>
+    <div class="card">
+      <h2>&#x1F4DA; Structured Learning Tracks</h2>
+      <div class="track">
+        <div class="track-header"><div class="track-num">1</div><div class="track-title">Foundations of Life &amp; the Body</div></div>
+        <div class="track-meta">&#x23F1; 3&ndash;4 hours &nbsp;&bull;&nbsp; Level: Beginner</div>
+        <ul>
+          <li>What is a cell? Organelles, tissues, and organs</li>
+          <li>Major organ systems and how they connect</li>
+          <li>Homeostasis &mdash; the body&rsquo;s balancing act</li>
+          <li>DNA basics: genes, chromosomes, and heredity</li>
+        </ul>
+        <div class="track-cta">Start with <strong>Cell Biology</strong>, <strong>Human Anatomy</strong>, and <strong>Genetics &amp; Evolution</strong> on the Explore page.</div>
+      </div>
+      <div class="track">
+        <div class="track-header"><div class="track-num">2</div><div class="track-title">Brain, Neurons &amp; Nervous System</div></div>
+        <div class="track-meta">&#x23F1; 4&ndash;6 hours &nbsp;&bull;&nbsp; Level: Intermediate</div>
+        <ul>
+          <li>Neuron anatomy and how action potentials fire</li>
+          <li>Synaptic transmission and neurotransmitters</li>
+          <li>Brain regions: cortex, limbic system, cerebellum</li>
+          <li>Neuroplasticity and how the brain rewires itself</li>
+          <li>Sleep stages, circadian rhythms, and dreaming</li>
+        </ul>
+        <div class="track-cta">Combine <strong>Brain Structure</strong>, <strong>Neurons &amp; Synapses</strong>, and <strong>Sleep &amp; Dreams</strong>.</div>
+      </div>
+      <div class="track">
+        <div class="track-header"><div class="track-num">3</div><div class="track-title">Mind, Behaviour &amp; Psychology</div></div>
+        <div class="track-meta">&#x23F1; 4&ndash;5 hours &nbsp;&bull;&nbsp; Level: Intermediate</div>
+        <ul>
+          <li>How emotions arise and influence decisions</li>
+          <li>Cognitive biases and how perception shapes reality</li>
+          <li>Social dynamics, influence, and group behaviour</li>
+          <li>Memory encoding, storage, and retrieval</li>
+        </ul>
+        <div class="track-cta">Explore <strong>Emotions &amp; Cognition</strong>, <strong>Social Psychology</strong>, and <strong>Learning &amp; Memory</strong>.</div>
+      </div>
+      <div class="track">
+        <div class="track-header"><div class="track-num">4</div><div class="track-title">Wellness &amp; the Brain-Body Connection</div></div>
+        <div class="track-meta">&#x23F1; 3&ndash;4 hours &nbsp;&bull;&nbsp; Level: Foundational&ndash;Intermediate</div>
+        <ul>
+          <li>The gut-brain axis and microbiome research</li>
+          <li>Exercise neuroscience: BDNF and mood</li>
+          <li>Mindfulness and its measurable brain effects</li>
+          <li>Nutrition, inflammation, and cognitive performance</li>
+        </ul>
+        <div class="track-cta">Use <strong>Mindfulness &amp; Meditation</strong>, <strong>Exercise &amp; Movement</strong>, and <strong>Nutrition &amp; Brain Health</strong>.</div>
+      </div>
+      <div class="tip-box"><strong>&#x1F4A1; Pro Tip:</strong> Open the BioMind AI chatbot on the Explore page and say &ldquo;Build me a 2-week study plan for the nervous system&rdquo; &mdash; it will generate a personalised schedule for you.</div>
+    </div>
+  </section>
+  <aside>
+    <div class="card">
+      <h2>&#x1F9ED; How to Use BioMind</h2>
+      <div><span class="tag">1. Explore</span><span class="tag">2. Ask AI</span><span class="tag">3. Review</span></div>
+      <p style="margin-top:1rem">Browse the topic cards on the <a href="explore.html" class="cta-link">Explore</a> page, then open the chatbot to ask questions or get analogies for tricky concepts.</p>
+      <p>Return to the Learn tracks regularly &mdash; spaced repetition dramatically improves retention.</p>
+    </div>
+    <div class="card">
+      <h2>&#x1F4AC; Ask the AI</h2>
+      <p>Some starter questions to try:</p>
+      <ul style="list-style:none;font-size:.88rem;color:var(--muted)">
+        <li style="padding:.3rem 0">&#x1F9E0; &ldquo;Explain synaptic pruning simply&rdquo;</li>
+        <li style="padding:.3rem 0">&#x1F9EC; &ldquo;What is the role of myelin?&rdquo;</li>
+        <li style="padding:.3rem 0">&#x1F634; &ldquo;Why does sleep improve memory?&rdquo;</li>
+        <li style="padding:.3rem 0">&#x1F9D8; &ldquo;How does mindfulness reduce stress?&rdquo;</li>
+        <li style="padding:.3rem 0">&#x1F966; &ldquo;Best foods for brain health?&rdquo;</li>
+      </ul>
+      <a href="explore.html" class="cta-link" style="display:inline-block;margin-top:1rem">&#x1F916; Open BioMind AI &rarr;</a>
+    </div>
+  </aside>
+</main>
+<footer>&#169; 2026 BioMind. All rights reserved. | An educational resource for curious minds.</footer>
+</body>
+</html>
