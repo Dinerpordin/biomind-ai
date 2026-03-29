@@ -1,3 +1,5 @@
+// BioMind AI - Serverless chat function
+// Uses openrouter/free router which auto-selects from all available free models
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -11,42 +13,54 @@ export default async function handler(req, res) {
   const { question } = req.body || {};
   if (!question || typeof question !== 'string') return res.status(400).json({ error: 'Invalid question' });
 
-  try {
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`,
-        'HTTP-Referer': 'https://biomind-ai-ten.vercel.app',
-        'X-Title': 'BioMind AI'
-      },
-      body: JSON.stringify({
-        model: 'mistralai/mistral-7b-instruct:free',
-        messages: [
-          { role: 'system', content: 'You are BioMind AI, a friendly and knowledgeable assistant specialising in biology, neuroscience, psychology, and wellness. Give concise, accurate, educational answers in 2-4 sentences. Use simple clear language.' },
-          { role: 'user', content: question }
-        ],
-        max_tokens: 400
-      })
-    });
+  // Try models in order until one works
+  const models = [
+    'meta-llama/llama-3.2-3b-instruct:free',
+    'google/gemma-3-27b-it:free',
+    'mistralai/mistral-small-3.1-24b-instruct:free',
+    'openrouter/auto'
+  ];
 
-    const data = await response.json();
-    console.log('OpenRouter status:', response.status);
-    console.log('OpenRouter response:', JSON.stringify(data).slice(0, 500));
+  const systemPrompt = 'You are BioMind AI, a friendly and knowledgeable assistant specialising in biology, neuroscience, psychology, and wellness. Give concise, accurate, educational answers in 2-4 sentences. Use simple clear language.';
 
-    if (data.error) {
-      console.error('OpenRouter error:', data.error);
-      return res.status(200).json({ answer: `Error from AI: ${data.error.message || JSON.stringify(data.error)}` });
+  for (const model of models) {
+    try {
+      const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`,
+          'HTTP-Referer': 'https://biomind-ai-ten.vercel.app',
+          'X-Title': 'BioMind AI'
+        },
+        body: JSON.stringify({
+          model,
+          messages: [
+            { role: 'system', content: systemPrompt },
+            { role: 'user', content: question }
+          ],
+          max_tokens: 400
+        })
+      });
+
+      const data = await response.json();
+      console.log(`Model ${model} status:`, response.status, JSON.stringify(data).slice(0, 200));
+
+      if (data.error) {
+        console.warn(`Model ${model} error:`, data.error.message || data.error);
+        continue; // try next model
+      }
+
+      const answer = data?.choices?.[0]?.message?.content;
+      if (answer) {
+        return res.status(200).json({ answer });
+      }
+
+      console.warn(`Model ${model} returned empty answer, trying next...`);
+    } catch (err) {
+      console.error(`Model ${model} threw:`, err.message);
     }
-
-    const answer = data?.choices?.[0]?.message?.content;
-    if (!answer) {
-      return res.status(200).json({ answer: 'The AI returned an empty response. Please try again.' });
-    }
-
-    return res.status(200).json({ answer });
-  } catch (err) {
-    console.error('Function error:', err);
-    return res.status(500).json({ error: 'Error contacting AI service' });
   }
+
+  return res.status(200).json({ answer: 'All AI models are currently busy. Please try again in a moment.' });
 }
