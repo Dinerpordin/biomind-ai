@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explore Topics - BioMind</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0f1e;
+      --surface: #111827;
+      --card: #1a2234;
+      --border: #2a3550;
+      --accent: #6366f1;
+      --accent2: #22d3ee;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --radius: 16px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2.5rem;
+      background: rgba(17,24,39,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent2); }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 5rem 1rem 3rem;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(99,102,241,0.15), transparent);
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #fff 40%, var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+    }
+
+    /* SEARCH */
+    .search-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .search-wrap input {
+      width: 100%;
+      max-width: 480px;
+      padding: 0.85rem 1.5rem;
+      border-radius: 50px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .search-wrap input:focus { border-color: var(--accent); }
+
+    /* FILTER PILLS */
+    .filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      padding: 0 1rem 2rem;
+    }
+    .pill {
+      padding: 0.4rem 1.1rem;
+      border-radius: 50px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .pill:hover, .pill.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    /* GRID */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem 6rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      cursor: pointer;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(99,102,241,0.06), rgba(34,211,238,0.04));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); border-color: var(--accent); }
+    .card:hover::before { opacity: 1; }
+
+    .card-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+    .card-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.2rem 0.65rem;
+      border-radius: 50px;
+      background: rgba(99,102,241,0.15);
+      color: var(--accent2);
+      margin-bottom: 0.8rem;
+    }
+    .card h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+    .card-footer {
+      margin-top: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .card-footer .badge {
+      background: rgba(34,211,238,0.1);
+      color: var(--accent2);
+      padding: 0.2rem 0.6rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .card.hidden { display: none; }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ===== AI CHATBOT ===== */
+    #chat-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      box-shadow: 0 8px 24px rgba(99,102,241,0.5);
+      z-index: 200;
+      transition: transform 0.2s;
+    }
+    #chat-btn:hover { transform: scale(1.1); }
+
+    #chat-panel {
+      position: fixed;
+      bottom: 5.5rem;
+      right: 2rem;
+      width: 360px;
+      max-height: 520px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.6);
+      z-index: 199;
+      overflow: hidden;
+      transform: scale(0.9) translateY(20px);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s cubic-bezier(.4,0,.2,1);
+    }
+    #chat-panel.open {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+    .chat-header {
+      padding: 1rem 1.2rem;
+      background: linear-gradient(135deg, var(--accent), #4f46e5);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .chat-header .avatar {
+      width: 36px;
+      height: 36px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+    .chat-header h4 { font-size: 0.95rem; font-weight: 600; }
+    .chat-header span { font-size: 0.75rem; opacity: 0.8; }
+    .chat-close {
+      margin-left: auto;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.3rem;
+      cursor: pointer;
+      opacity: 0.8;
+    }
+    .chat-close:hover { opacity: 1; }
+
+    #chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+    .msg {
+      max-width: 85%;
+      padding: 0.65rem 0.9rem;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      animation: fadeUp 0.2s ease;
+    }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+    .msg.user {
+      align-self: flex-end;
+      background: var(--accent);
+      color: #fff;
+      border-bottom-right-radius: 4px;
+    }
+    .msg.bot {
+      align-self: flex-start;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-bottom-left-radius: 4px;
+    }
+    .msg.typing { color: var(--muted); font-style: italic; }
+
+    .chat-input-wrap {
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.9rem;
+      border-top: 1px solid var(--border);
+    }
+    .chat-input-wrap input {
+      flex: 1;
+      padding: 0.6rem 0.9rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      font-size: 0.88rem;
+      outline: none;
+    }
+    .chat-input-wrap input:focus { border-color: var(--accent); }
+    .chat-input-wrap button {
+      padding: 0.6rem 1rem;
+      background: var(--accent);
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.2s;
+    }
+    .chat-input-wrap button:hover { background: #4f46e5; }
+
+    .suggested-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      padding: 0 1rem 0.6rem;
+    }
+    .chip {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.7rem;
+      background: rgba(99,102,241,0.15);
+      border: 1px solid rgba(99,102,241,0.3);
+      border-radius: 50px;
+      color: var(--accent2);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .chip:hover { background: rgba(99,102,241,0.3); }
+
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.2rem; }
+      nav ul { gap: 1rem; }
+      .grid { padding: 0 1rem 5rem; }
+      #chat-panel { width: calc(100vw - 2rem); right: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">🧠 BioMind</div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="explore.html" class="active">Explore</a></li>
+    <li><a href="learn.html">Learn</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <h1>Explore Topics</h1>
+  <p>Dive deep into the science of the human body and mind. Filter by category and ask our AI assistant anything.</p>
+  <div class="search-wrap">
+    <input type="text" id="search" placeholder="🔍  Search topics..." oninput="filterCards()" />
+  </div>
+</section>
+
+<div class="filters">
+  <button class="pill active" onclick="setFilter('all', this)">All</button>
+  <button class="pill" onclick="setFilter('biology', this)">Biology</button>
+  <button class="pill" onclick="setFilter('neuroscience', this)">Neuroscience</button>
+  <button class="pill" onclick="setFilter('psychology', this)">Psychology</button>
+  <button class="pill" onclick="setFilter('wellness', this)">Wellness</button>
+</div>
+
+<main class="grid" id="card-grid">
+
+  <div class="card" data-cat="biology" data-title="Cell Biology">
+    <span class="card-icon">🧬</span>
+    <span class="card-tag">Biology</span>
+    <h3>Cell Biology</h3>
+    <p>Explore the smallest units of life — how cells function, divide, and interact within organisms.</p>
+    <div class="card-footer"><span>12 articles</span><span class="badge">Foundational</span></div>
+  </div>
+
+  <div class="card" data-cat="biology" data-title="Human Anatomy">
+    <span class="card-icon">🦴</span>
+    <span class="card-tag">Biology</span>
+    <h3>Human Anatomy</h3>
+    <p>Learn about the structure of the human body — from bones and muscles to organs and systems.</p>
+    <div class="card-footer"><span>18 articles</span><span class="badge">Intermediate</span></div>
+  </div>
+
+  <div class="card" data-cat="biology" data-title="Genetics & Evolution">
+    <span class="card-icon">💉</span>
+    <span class="card-tag">Biology</span>
+    <h3>Genetics & Evolution</h3>
+    <p>Understand heredity, DNA, and how species adapt and evolve over millions of years.</p>
+    <div class="card-footer"><span>15 articles</span><span class="badge">Advanced</span></div>
+  </div>
+
+  <div class="card" data-cat="neuroscience" data-title="Brain Structure">
+    <span class="card-icon">🧠</span>
+    <span class="card-tag">Neuroscience</span>
+    <h3>Brain Structure</h3>
+    <p>Discover the different regions of the brain and their specialized roles in human behaviour.</p>
+    <div class="card-footer"><span>20 articles</span><span class="badge">Intermediate</span></div>
+  </div>
+
+  <div class="card" data-cat="neuroscience" data-title="Neurons & Synapses">
+    <span class="card-icon">⚡</span>
+    <span class="card-tag">Neuroscience</span>
+    <h3>Neurons & Synapses</h3>
+    <p>Explore how neurons fire, communicate across synapses, and form the basis of thought and memory.</p>
+    <div class="card-footer"><span>14 articles</span><span class="badge">Advanced</span></div>
+  </div>
+
+  <div class="card" data-cat="neuroscience" data-title="Sleep & Dreams">
+    <span class="card-icon">💤</span>
+    <span class="card-tag">Neuroscience</span>
+    <h3>Sleep & Dreams</h3>
+    <p>Understand the importance of sleep stages, circadian rhythms, and the science of dreaming.</p>
+    <div class="card-footer"><span>10 articles</span><span class="badge">Foundational</span></div>
+  </div>
+
+  <div class="card" data-cat="psychology" data-title="Emotions & Cognition">
+    <span class="card-icon">💭</span>
+    <span class="card-tag">Psychology</span>
+    <h3>Emotions & Cognition</h3>
+    <p>Learn how emotions arise in the brain and shape our thinking, decisions, and behaviour.</p>
+    <div class="card-footer"><span>16 articles</span><span class="badge">Intermediate</span></div>
+  </div>
+
+  <div class="card" data-cat="psychology" data-title="Social Psychology">
+    <span class="card-icon">👥</span>
+    <span class="card-tag">Psychology</span>
+    <h3>Social Psychology</h3>
+    <p>Explore how people interact, influence each other, form relationships, and develop group dynamics.</p>
+    <div class="card-footer"><span>13 articles</span><span class="badge">Intermediate</span></div>
+  </div>
+
+  <div class="card" data-cat="psychology" data-title="Learning & Memory">
+    <span class="card-icon">🎯</span>
+    <span class="card-tag">Psychology</span>
+    <h3>Learning & Memory</h3>
+    <p>Understand how we encode, store, and retrieve information — and techniques to sharpen recall.</p>
+    <div class="card-footer"><span>17 articles</span><span class="badge">Intermediate</span></div>
+  </div>
+
+  <div class="card" data-cat="wellness" data-title="Mindfulness & Meditation">
+    <span class="card-icon">🧘</span>
+    <span class="card-tag">Wellness</span>
+    <h3>Mindfulness & Meditation</h3>
+    <p>Discover the neuroscience behind mindfulness and evidence-based benefits for mental health.</p>
+    <div class="card-footer"><span>11 articles</span><span class="badge">Foundational</span></div>
+  </div>
+
+  <div class="card" data-cat="wellness" data-title="Exercise & Movement">
+    <span class="card-icon">💪</span>
+    <span class="card-tag">Wellness</span>
+    <h3>Exercise & Movement</h3>
+    <p>Learn how physical activity boosts brain plasticity, mood, and long-term cognitive health.</p>
+    <div class="card-footer"><span>9 articles</span><span class="badge">Foundational</span></div>
+  </div>
+
+  <div class="card" data-cat="wellness" data-title="Nutrition & Brain Health">
+    <span class="card-icon">🥗</span>
+    <span class="card-tag">Wellness</span>
+    <h3>Nutrition & Brain Health</h3>
+    <p>Understand the gut-brain axis and how diet profoundly influences cognition and mental performance.</p>
+    <div class="card-footer"><span>14 articles</span><span class="badge">Intermediate</span></div>
+  </div>
+
+</main>
+
+<footer>
+  © 2026 BioMind. All rights reserved. | An educational resource for curious minds.
+</footer>
+
+<!-- AI CHATBOT -->
+<button id="chat-btn" onclick="toggleChat()" title="Ask BioMind AI">🤖</button>
+
+<div id="chat-panel">
+  <div class="chat-header">
+    <div class="avatar">🧠</div>
+    <div>
+      <h4>BioMind AI</h4>
+      <span>Ask me anything about biology & neuroscience</span>
+    </div>
+    <button class="chat-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div id="chat-messages">
+    <div class="msg bot">👋 Hi! I'm your BioMind AI assistant. Ask me anything about biology, neuroscience, psychology, or wellness!</div>
+  </div>
+  <div class="suggested-chips" id="chips">
+    <button class="chip" onclick="sendChip('How do neurons communicate?')">How do neurons communicate?</button>
+    <button class="chip" onclick="sendChip('What happens during REM sleep?')">What is REM sleep?</button>
+    <button class="chip" onclick="sendChip('How does DNA replication work?')">DNA replication</button>
+  </div>
+  <div class="chat-input-wrap">
+    <input type="text" id="chat-input" placeholder="Ask a biology question..." onkeydown="if(event.key==='Enter') sendMessage()" />
+    <button onclick="sendMessage()">➤</button>
+  </div>
+</div>
+
+<script>
+  // ---- FILTER & SEARCH ----
+  let activeFilter = 'all';
+
+  function setFilter(cat, el) {
+    activeFilter = cat;
+    document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+    el.classList.add('active');
+    filterCards();
+  }
+
+  function filterCards() {
+    const q = document.getElementById('search').value.toLowerCase();
+    document.querySelectorAll('.card').forEach(card => {
+      const matchCat = activeFilter === 'all' || card.dataset.cat === activeFilter;
+      const matchSearch = card.dataset.title.toLowerCase().includes(q) || card.querySelector('p').textContent.toLowerCase().includes(q);
+      card.classList.toggle('hidden', !(matchCat && matchSearch));
+    });
+  }
+
+  // ---- CHATBOT ----
+  function toggleChat() {
+    document.getElementById('chat-panel').classList.toggle('open');
+    if (document.getElementById('chat-panel').classList.contains('open')) {
+      document.getElementById('chat-input').focus();
+    }
+  }
+
+  function sendChip(text) {
+    document.getElementById('chat-input').value = text;
+    sendMessage();
+  }
+
+  function addMsg(text, role) {
+    const msgs = document.getElementById('chat-messages');
+    const el = document.createElement('div');
+    el.className = 'msg ' + role;
+    el.textContent = text;
+    msgs.appendChild(el);
+    msgs.scrollTop = msgs.scrollHeight;
+    return el;
+  }
+
+  async function sendMessage() {
+    const input = document.getElementById('chat-input');
+    const text = input.value.trim();
+    if (!text) return;
+    input.value = '';
+    document.getElementById('chips').style.display = 'none';
+    addMsg(text, 'user');
+    const typing = addMsg('Thinking...', 'bot typing');
+
+    try {
+      // Using OpenRouter free model — replace API_KEY below with your key
+      const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+          'HTTP-Referer': window.location.href,
+          'X-Title': 'BioMind AI'
+        },
+        body: JSON.stringify({
+          model: 'mistralai/mistral-7b-instruct:free',
+          messages: [
+            { role: 'system', content: 'You are BioMind AI, a friendly and knowledgeable assistant specialising in biology, neuroscience, psychology, and wellness. Give concise, accurate, educational answers. Use simple language and engaging explanations.' },
+            { role: 'user', content: text }
+          ],
+          max_tokens: 300
+        })
+      });
+      const data = await res.json();
+      const reply = data?.choices?.[0]?.message?.content || 'Sorry, I could not get a response. Please try again!';
+      typing.classList.remove('typing');
+      typing.textContent = reply;
+    } catch (e) {
+      typing.textContent = 'Connection error. Please check your API key or try again later.';
+      typing.classList.remove('typing');
+    }
+    document.getElementById('chat-messages').scrollTop = 9999;
+  }
+</script>
+</body>
+</html>
