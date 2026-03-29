@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About - BioMind</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0a0f1e;--surface:#111827;--card:#1a2234;--border:#2a3550;--accent:#6366f1;--accent2:#22d3ee;--text:#e2e8f0;--muted:#94a3b8;--radius:16px}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2.5rem;background:rgba(17,24,39,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+    .logo{font-family:'Playfair Display',serif;font-size:1.6rem;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    nav ul{list-style:none;display:flex;gap:2rem}
+    nav a{text-decoration:none;color:var(--muted);font-weight:500;font-size:.95rem;transition:color .2s}
+    nav a:hover,nav a.active{color:var(--accent2)}
+    .hero{text-align:center;padding:5rem 1rem 3rem;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(99,102,241,.15),transparent)}
+    .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.5rem);margin-bottom:1rem;background:linear-gradient(135deg,#fff 40%,var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero p{color:var(--muted);font-size:1.1rem;max-width:620px;margin:0 auto}
+    .wrap{max-width:900px;margin:0 auto;padding:2.5rem 2rem 5rem}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;margin-bottom:1.5rem}
+    h2{font-size:1.2rem;margin-bottom:.9rem;color:var(--text)}
+    p{font-size:.93rem;line-height:1.75;color:var(--muted);margin-bottom:.8rem}
+    .tag{display:inline-block;padding:.25rem .75rem;border-radius:999px;border:1px solid var(--border);font-size:.75rem;color:var(--accent2);background:rgba(99,102,241,.12);margin:.2rem}
+    .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:1rem}
+    .feature{background:rgba(99,102,241,.07);border:1px solid var(--border);border-radius:12px;padding:1rem;text-align:center}
+    .feature-icon{font-size:2rem;margin-bottom:.5rem}
+    .feature h3{font-size:.9rem;font-weight:600;margin-bottom:.3rem}
+    .feature p{font-size:.82rem;color:var(--muted);margin:0}
+    .disclaimer{background:rgba(255,200,0,.05);border:1px solid rgba(255,200,0,.2);border-radius:12px;padding:1rem;font-size:.85rem;color:var(--muted);margin-top:1rem}
+    .disclaimer strong{color:#fbbf24}
+    a.link{color:var(--accent2);text-decoration:none}
+    a.link:hover{text-decoration:underline}
+    footer{text-align:center;padding:2rem;color:var(--muted);font-size:.85rem;border-top:1px solid var(--border)}
+    @media(max-width:900px){nav{padding:1rem 1.2rem}nav ul{gap:1rem}.wrap{padding:1.5rem 1.2rem 4rem}}
+  </style>
+</head>
+<body>
+<nav>
+  <div class="logo">&#x1F9E0; BioMind</div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="explore.html">Explore</a></li>
+    <li><a href="learn.html">Learn</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+  </ul>
+</nav>
+<section class="hero">
+  <h1>About BioMind</h1>
+  <p>An open educational project that pairs clear science with modern AI to make the human body and mind accessible to everyone.</p>
+</section>
+<main class="wrap">
+  <section class="card">
+    <h2>&#x1F3AF; Our Mission</h2>
+    <p>BioMind exists to lower the barrier to high-quality knowledge about biology, neuroscience, psychology, and wellbeing. Too often, these subjects feel locked behind jargon or expensive textbooks. We want to change that.</p>
+    <p>By combining concise topic summaries with an on-page AI assistant, BioMind lets you learn at your own pace, ask follow-up questions in plain language, and connect ideas across different fields of science.</p>
+  </section>
+  <section class="card">
+    <h2>&#x2728; What You Can Do Here</h2>
+    <div class="feature-grid">
+      <div class="feature"><div class="feature-icon">&#x1F52D;</div><h3>Explore Topics</h3><p>Browse curated cards across Biology, Neuroscience, Psychology &amp; Wellness.</p></div>
+      <div class="feature"><div class="feature-icon">&#x1F916;</div><h3>Ask the AI</h3><p>Chat with BioMind AI for simple explanations, analogies, or study plans.</p></div>
+      <div class="feature"><div class="feature-icon">&#x1F4CB;</div><h3>Follow Tracks</h3><p>Use the Learn page for structured pathways from beginner to advanced.</p></div>
+      <div class="feature"><div class="feature-icon">&#x1F50D;</div><h3>Search &amp; Filter</h3><p>Quickly find topics by keyword or category using the live search tool.</p></div>
+    </div>
+  </section>
+  <section class="card">
+    <h2>&#x1F4BB; The Technology</h2>
+    <p>BioMind is a static web application hosted on <a href="https://vercel.com" class="link" target="_blank">Vercel</a> and version-controlled on <a href="https://github.com/Dinerpordin/biomind-ai" class="link" target="_blank">GitHub</a>.</p>
+    <p>The AI assistant is powered by <strong>Mistral 7B Instruct</strong> via <a href="https://openrouter.ai" class="link" target="_blank">OpenRouter</a>. User queries are routed through a secure Vercel serverless function &mdash; the API key is never exposed in the browser.</p>
+    <div><span class="tag">Vercel</span><span class="tag">GitHub</span><span class="tag">OpenRouter</span><span class="tag">Mistral 7B</span><span class="tag">Vanilla JS</span><span class="tag">HTML/CSS</span></div>
+    <div class="disclaimer"><strong>&#x26A0;&#xFE0F; Disclaimer:</strong> BioMind AI is designed for educational use. Responses may sometimes be inaccurate or oversimplified. Always consult qualified professionals for medical or health decisions.</div>
+  </section>
+  <section class="card">
+    <h2>&#x1F91D; Get Involved</h2>
+    <p>BioMind is open source. If you&rsquo;d like to contribute new topic cards, improve the design, or suggest features, the repository is open at <a href="https://github.com/Dinerpordin/biomind-ai" class="link" target="_blank">github.com/Dinerpordin/biomind-ai</a>.</p>
+    <p>Ready to start learning? <a href="explore.html" class="link">Head to the Explore page &rarr;</a></p>
+  </section>
+</main>
+<footer>&#169; 2026 BioMind. All rights reserved. | An educational resource for curious minds.</footer>
+</body>
+</html>
