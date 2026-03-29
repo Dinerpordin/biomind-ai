@@ -24,14 +24,15 @@
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
+      overflow-x: hidden;
     }
     /* NAV */
     nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1.2rem 2.5rem;
-      background: rgba(17,24,39,0.85);
+      padding: 1.2rem 5%;
+      background: rgba(17, 24, 39, 0.85);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       position: sticky;
@@ -39,540 +40,196 @@
       z-index: 100;
     }
     .logo {
-      font-family: 'Playfair Display', serif;
+      display: flex;
+      align-items: center;
+      gap: 12px;
       font-size: 1.6rem;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      font-weight: 800;
+      color: #fff;
+      text-decoration: none;
     }
-    nav ul { list-style: none; display: flex; gap: 2rem; }
-    nav a { color: var(--muted); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
-    nav a:hover, nav a.active { color: var(--accent2); }
+    .logo-icon {
+      font-size: 2rem;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 500;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--text);
+    }
+    .nav-links a.active {
+      border-bottom: 2.5px solid var(--accent);
+      padding-bottom: 5px;
+    }
 
     /* HERO */
     .hero {
       text-align: center;
-      padding: 5rem 1rem 3rem;
-      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(99,102,241,0.15), transparent);
+      padding: 6rem 1rem 4rem;
+      max-width: 850px;
+      margin: 0 auto;
     }
     .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
-      margin-bottom: 1rem;
-      background: linear-gradient(135deg, #fff 40%, var(--accent2));
+      font-size: 4rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      background-clip: text;
+      letter-spacing: -1px;
     }
-    .hero p { color: var(--muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto 2.5rem; }
-
-    /* SEARCH */
-    .search-wrap { display: flex; justify-content: center; margin-bottom: 1rem; }
-    .search-wrap input {
-      width: 100%;
-      max-width: 480px;
-      padding: 0.85rem 1.5rem;
-      border-radius: 50px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--text);
-      font-size: 1rem;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    .search-wrap input:focus { border-color: var(--accent); }
-
-    /* FILTER PILLS */
-    .filters { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.6rem; padding: 0 1rem 2rem; }
-    .pill {
-      padding: 0.4rem 1.1rem;
-      border-radius: 50px;
-      border: 1px solid var(--border);
-      background: var(--surface);
+    .hero p {
+      font-size: 1.25rem;
       color: var(--muted);
-      cursor: pointer;
-      font-size: 0.85rem;
-      font-weight: 500;
-      transition: all 0.2s;
+      line-height: 1.7;
     }
-    .pill:hover, .pill.active { background: var(--accent); border-color: var(--accent); color: #fff; }
 
     /* GRID */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem;
-      max-width: 1200px;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2.5rem;
+      padding: 0 5% 8rem;
+      max-width: 1400px;
       margin: 0 auto;
-      padding: 0 2rem 6rem;
     }
     .card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 0;
-      cursor: pointer;
-      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
-      position: relative;
-      overflow: hidden;
+      padding: 2.2rem;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       display: flex;
       flex-direction: column;
+      gap: 1.2rem;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
     }
-    .card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); border-color: var(--accent); }
-    
-    .card-img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      border-bottom: 1px solid var(--border);
+    .card:hover {
+      transform: translateY(-10px);
+      border-color: var(--accent);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
     }
-    .card-content { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
-
-    .card-tag {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      padding: 0.2rem 0.65rem;
-      border-radius: 50px;
-      background: rgba(99,102,241,0.15);
-      color: var(--accent2);
-      margin-bottom: 0.8rem;
-      width: fit-content;
-    }
-    .card h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.5rem; }
-    .card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
-    .card-footer {
-      margin-top: 1.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-    .card-footer .badge {
-      background: rgba(34,211,238,0.1);
-      color: var(--accent2);
-      padding: 0.2rem 0.6rem;
-      border-radius: 50px;
-      font-size: 0.75rem;
-      font-weight: 600;
-    }
-    .card.hidden { display: none; }
-
-    /* FOOTER */
-    footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--border); }
-
-    /* ===== AI CHATBOT ===== */
-    #chat-btn {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
+    .card-icon-bg {
       width: 60px;
       height: 60px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      border: none;
-      cursor: pointer;
+      background: rgba(99, 102, 241, 0.1);
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.6rem;
-      box-shadow: 0 8px 24px rgba(99,102,241,0.5);
-      z-index: 200;
-      transition: transform 0.2s;
+      font-size: 2rem;
     }
-    #chat-btn:hover { transform: scale(1.1); }
-    
-    /* POPUP HIGHLIGHT */
-    .chat-popup {
-      position: fixed;
-      bottom: 6rem;
-      right: 2.5rem;
-      background: var(--accent);
-      color: white;
-      padding: 0.8rem 1.2rem;
-      border-radius: 12px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-      z-index: 201;
-      animation: bounce 2s infinite;
-      cursor: pointer;
-      opacity: 0;
-      transition: opacity 0.5s;
+    .card-tag {
+      background: rgba(99, 102, 241, 0.15);
+      color: var(--accent2);
+      padding: 5px 14px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      align-self: flex-start;
+      letter-spacing: 0.5px;
     }
-    .chat-popup::after {
+    .card h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .card p {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+    .card-img {
+      margin-top: 1rem;
+      width: 100%;
+      height: 220px;
+      border-radius: 14px;
+      background-size: cover;
+      background-position: center;
+      border: 1px solid var(--border);
+      filter: brightness(0.8);
+      transition: filter 0.3s;
+    }
+    .card:hover .card-img {
+      filter: brightness(1.1);
+    }
+
+    /* Glow Elements */
+    .card::before {
       content: '';
       position: absolute;
-      bottom: -8px;
-      right: 20px;
-      border-left: 8px solid transparent;
-      border-right: 8px solid transparent;
-      border-top: 8px solid var(--accent);
-    }
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-      40% {transform: translateY(-10px);}
-      60% {transform: translateY(-5px);}
-    }
-
-    #chat-panel {
-      position: fixed;
-      bottom: 5.5rem;
-      right: 2rem;
-      width: 360px;
-      max-height: 520px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 24px 64px rgba(0,0,0,0.6);
-      z-index: 199;
-      overflow: hidden;
-      transform: scale(0.9) translateY(20px);
-      opacity: 0;
+      top: -100px;
+      right: -100px;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
       pointer-events: none;
-      transition: all 0.25s cubic-bezier(.4,0,.2,1);
     }
-    #chat-panel.open { transform: scale(1) translateY(0); opacity: 1; pointer-events: all; }
-    .chat-header { padding: 1rem 1.2rem; background: linear-gradient(135deg, var(--accent), #4f46e5); display: flex; align-items: center; gap: 0.8rem; }
-    .chat-header .avatar { width: 36px; height: 36px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
-    .chat-header h4 { font-size: 0.95rem; font-weight: 600; }
-    .chat-header span { font-size: 0.75rem; opacity: 0.8; }
-    .chat-close { margin-left: auto; background: none; border: none; color: #fff; font-size: 1.3rem; cursor: pointer; opacity: 0.8; }
-    .chat-close:hover { opacity: 1; }
 
-    #chat-messages { flex: 1; overflow-y: auto; padding: 1rem; display: flex; flex-direction: column; gap: 0.8rem; scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
-    .msg { max-width: 85%; padding: 0.65rem 0.9rem; border-radius: 12px; font-size: 0.88rem; line-height: 1.5; animation: fadeUp 0.2s ease; }
-    @keyframes fadeUp { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
-    .msg.user { align-self: flex-end; background: var(--accent); color: #fff; border-bottom-right-radius: 4px; }
-    .msg.bot { align-self: flex-start; background: var(--card); border: 1px solid var(--border); color: var(--text); border-bottom-left-radius: 4px; }
-    .msg.typing { color: var(--muted); font-style: italic; }
-
-    .chat-input-wrap { display: flex; gap: 0.5rem; padding: 0.9rem; border-top: 1px solid var(--border); }
-    .chat-input-wrap input { flex: 1; padding: 0.6rem 0.9rem; border-radius: 8px; border: 1px solid var(--border); background: var(--card); color: var(--text); font-size: 0.88rem; outline: none; }
-    .chat-input-wrap button { padding: 0.6rem 1rem; background: var(--accent); border: none; border-radius: 8px; color: #fff; cursor: pointer; font-size: 1rem; }
-
-    .suggested-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 0 1rem 0.6rem; }
-    .chip { font-size: 0.75rem; padding: 0.3rem 0.7rem; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 50px; color: var(--accent2); cursor: pointer; }
-
-    @media (max-width: 600px) {
-      nav { padding: 1rem 1.2rem; }
-      nav ul { gap: 1rem; }
-      .grid { padding: 0 1rem 5rem; }
-      #chat-panel { width: calc(100vw - 2rem); right: 1rem; }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.8rem; }
+      .hero p { font-size: 1.1rem; }
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { display: none; } /* Could add hamburger */
     }
   </style>
 </head>
 <body>
-
   <nav>
-    <div class="logo">🧠 BioMind</div>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="explore.html" class="active">Explore</a></li>
-      <li><a href="learn.html">Learn</a></li>
-      <li><a href="about.html">About</a></li>
-    </ul>
+    <a href="#" class="logo">
+      <span class="logo-icon">🧠</span>
+      BioMind
+    </a>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#" class="active">Explore</a>
+      <a href="#">Learn</a>
+      <a href="#">About</a>
+    </div>
   </nav>
 
-  <section class="hero">
+  <header class="hero">
     <h1>Explore Topics</h1>
-    <p>Dive deep into the science of the human body and mind. Filter by category and ask our AI assistant anything.</p>
-    
-    <div class="search-wrap">
-      <input type="text" id="search" placeholder="🔍  Search topics..." oninput="filterCards()">
-    </div>
-  </section>
+    <p>Dive deep into our comprehensive topics and expand your knowledge about the human body and mind with our AI-powered learning modules.</p>
+  </header>
 
-  <div class="filters">
-    <button class="pill active" onclick="setFilter('all', this)">All</button>
-    <button class="pill" onclick="setFilter('biology', this)">Biology</button>
-    <button class="pill" onclick="setFilter('neuroscience', this)">Neuroscience</button>
-    <button class="pill" onclick="setFilter('psychology', this)">Psychology</button>
-    <button class="pill" onclick="setFilter('wellness', this)">Wellness</button>
-  </div>
-
-  <div class="grid">
-    <!-- BIOLOGY -->
-    <div class="card" data-cat="biology" data-title="Cell Biology">
-      <img src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&w=400&q=80" alt="Cells" class="card-img">
-      <div class="card-content">
-        <span class="card-tag">Biology</span>
-        <h3>Cell Biology</h3>
-        <p>Explore the smallest units of life — how cells function, divide, and interact within organisms.</p>
-        <div class="card-footer">
-          <span>12 articles</span>
-          <span class="badge">Foundational</span>
-        </div>
-      </div>
+  <main class="grid">
+    <!-- Card 1 -->
+    <div class="card">
+      <div class="card-icon-bg">🧬</div>
+      <span class="card-tag">Molecular Biology</span>
+      <h2>Cellular Mechanics</h2>
+      <p>Explore the fundamental building blocks of life, from DNA structures to complex cellular systems and processes.</p>
+      <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1530026405186-ed1f1391c3f2?auto=format&fit=crop&q=80&w=800')"></div>
     </div>
 
-    <div class="card" data-cat="biology" data-title="Human Anatomy">
-      <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=400&q=80" alt="Anatomy" class="card-img">
-      <div class="card-content">
-        <span class="card-tag">Biology</span>
-        <h3>Human Anatomy</h3>
-        <p>Learn about the structure of the human body — from bones and muscles to organs and systems.</p>
-        <div class="card-footer">
-          <span>18 articles</span>
-          <span class="badge">Intermediate</span>
-        </div>
-      </div>
+    <!-- Card 2 -->
+    <div class="card">
+      <div class="card-icon-bg">🦴</div>
+      <span class="card-tag">Human Anatomy</span>
+      <h2>Skeletal System</h2>
+      <p>Comprehensive guide to the human skeletal structure, detailing bone functions, joints, and musculoskeletal systems.</p>
+      <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1579154235602-44373dbef440?auto=format&fit=crop&q=80&w=800')"></div>
     </div>
 
-    <div class="card" data-cat="biology" data-title="Genetics & Evolution">
-      <img src="https://images.unsplash.com/photo-1530210124550-912dc1381cb8?auto=format&fit=crop&w=400&q=80" alt="DNA" class="card-img">
-      <div class="card-content">
-        <span class="card-tag">Biology</span>
-        <h3>Genetics & Evolution</h3>
-        <p>Understand heredity, DNA, and how species adapt and evolve over millions of years.</p>
-        <div class="card-footer">
-          <span>15 articles</span>
-          <span class="badge">Advanced</span>
-        </div>
-      </div>
+    <!-- Card 3 -->
+    <div class="card">
+      <div class="card-icon-bg">💉</div>
+      <span class="card-tag">Genetics</span>
+      <h2>Genetics & Evolution</h2>
+      <p>Understand the science of heredity, chromosome patterns, and the mechanisms behind species evolution over millions of years.</p>
+      <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&q=80&w=800')"></div>
     </div>
-
-    <!-- NEUROSCIENCE -->
-    <div class="card" data-cat="neuroscience" data-title="Brain Structure">
-      <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=400&q=80" alt="Brain" class="card-img">
-      <div class="card-content">
-        <span class="card-tag">Neuroscience</span>
-        <h3>Brain Structure</h3>
-        <p>Discover the different regions of the brain and their specialized roles in human behaviour.</p>
-        <div class="card-footer">
-          <span>20 articles</span>
-          <span class="badge">Intermediate</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="card" data-cat="neuroscience" data-title="Neurons & Synapses">
-      <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=400&q=80" alt="Neurons" class="card-img">
-      <div class="card-content">
-        <span class="card-tag">Neuroscience</span>
-        <h3>Neurons & Synapses</h3>
-        <p>Explore how neurons fire, communicate across synapses, and form the basis of thought and memory.</p>
-        <div class="card-footer">
-          <span>14 articles</span>
-          <span class="badge">Advanced</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="card" data-cat="neuroscience" data-title="Sleep & Dreams">
-      <img src="https://images.unsplash.com/photo-1520206151081-9bf9c0474917?auto=format&fit=crop&w=400&q=80" alt="Sleep" class="card-img">
-      <div class="card-content">
-        <span class="card-tag">Neuroscience</span>
-        <h3>Sleep & Dreams</h3>
-        <p>Understand the importance of sleep stages, circadian rhythms, and the science of dreaming.</p>
-        <div class="card-footer">
-          <span>10 articles</span>
-          <span class="badge">Foundational</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- PSYCHOLOGY -->
-    <div class="card" data-cat="psychology" data-title="Emotions & Cognition">
-      <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=400&q=80" alt="Emotions" class="card-img">
-      <div class="card-content">
-        <span class="card-tag">Psychology</span>
-        <h3>Emotions & Cognition</h3>
-        <p>Learn how emotions arise in the brain and shape our thinking, decisions, and behaviour.</p>
-        <div class="card-footer">
-          <span>16 articles</span>
-          <span class="badge">Intermediate</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="card" data-cat="psychology" data-title="Social Psychology">
-      <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=400&q=80" alt="Social" class="card-img">
-      <div class="card-content">
-        <span class="card-tag">Psychology</span>
-        <h3>Social Psychology</h3>
-        <p>Explore how people interact, influence each other, form relationships, and develop group dynamics.</p>
-        <div class="card-footer">
-          <span>13 articles</span>
-          <span class="badge">Intermediate</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="card" data-cat="psychology" data-title="Learning & Memory">
-      <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=400&q=80" alt="Learning" class="card-img">
-      <div class="card-content">
-        <span class="card-tag">Psychology</span>
-        <h3>Learning & Memory</h3>
-        <p>Understand how we encode, store, and retrieve information — and techniques to sharpen recall.</p>
-        <div class="card-footer">
-          <span>17 articles</span>
-          <span class="badge">Intermediate</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- WELLNESS -->
-    <div class="card" data-cat="wellness" data-title="Mindfulness & Meditation">
-      <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=400&q=80" alt="Mindfulness" class="card-img">
-      <div class="card-content">
-        <span class="card-tag">Wellness</span>
-        <h3>Mindfulness & Meditation</h3>
-        <p>Discover the neuroscience behind mindfulness and evidence-based benefits for mental health.</p>
-        <div class="card-footer">
-          <span>11 articles</span>
-          <span class="badge">Foundational</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="card" data-cat="wellness" data-title="Exercise & Movement">
-      <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=400&q=80" alt="Exercise" class="card-img">
-      <div class="card-content">
-        <span class="card-tag">Wellness</span>
-        <h3>Exercise & Movement</h3>
-        <p>Learn how physical activity boosts brain plasticity, mood, and long-term cognitive health.</p>
-        <div class="card-footer">
-          <span>9 articles</span>
-          <span class="badge">Foundational</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="card" data-cat="wellness" data-title="Nutrition & Brain Health">
-      <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=400&q=80" alt="Nutrition" class="card-img">
-      <div class="card-content">
-        <span class="card-tag">Wellness</span>
-        <h3>Nutrition & Brain Health</h3>
-        <p>Understand the gut-brain axis and how diet profoundly influences cognition and mental performance.</p>
-        <div class="card-footer">
-          <span>14 articles</span>
-          <span class="badge">Intermediate</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <p>© 2026 BioMind. All rights reserved. | Developed by Ruponti Rahman</p>
-  </footer>
-
-  <!-- CHATBOT -->
-  <div id="chat-popup" class="chat-popup" onclick="toggleChat()">Need help? Ask BioMind AI!</div>
-  <button id="chat-btn" onclick="toggleChat()">🤖</button>
-
-  <div id="chat-panel">
-    <div class="chat-header">
-      <div class="avatar">🧠</div>
-      <div>
-        <h4>BioMind AI</h4>
-        <span>Online to help you learn</span>
-      </div>
-      <button class="chat-close" onclick="toggleChat()">✕</button>
-    </div>
-    
-    <div id="chat-messages">
-      <div class="msg bot">👋 Hi! I'm your BioMind AI assistant. Ask me anything about biology, neuroscience, psychology, or wellness!</div>
-      <div id="chips" class="suggested-chips">
-        <div class="chip" onclick="sendChip('How do neurons communicate?')">How do neurons communicate?</div>
-        <div class="chip" onclick="sendChip('What is REM sleep?')">What is REM sleep?</div>
-        <div class="chip" onclick="sendChip('DNA replication')">DNA replication</div>
-      </div>
-    </div>
-
-    <div class="chat-input-wrap">
-      <input type="text" id="chat-input" placeholder="Ask a biology question..." onkeydown="if(event.key==='Enter') sendMessage()">
-      <button onclick="sendMessage()">➤</button>
-    </div>
-  </div>
-
-  <script>
-    // ---- FILTER & SEARCH ----
-    let activeFilter = 'all';
-
-    function setFilter(cat, el) {
-      activeFilter = cat;
-      document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
-      el.classList.add('active');
-      filterCards();
-    }
-
-    function filterCards() {
-      const q = document.getElementById('search').value.toLowerCase();
-      document.querySelectorAll('.card').forEach(card => {
-        const matchCat = activeFilter === 'all' || card.dataset.cat === activeFilter;
-        const matchSearch = card.dataset.title.toLowerCase().includes(q) || 
-                          card.querySelector('p').textContent.toLowerCase().includes(q);
-        card.classList.toggle('hidden', !(matchCat && matchSearch));
-      });
-    }
-
-    // ---- CHATBOT ----
-    function toggleChat() {
-      const panel = document.getElementById('chat-panel');
-      const popup = document.getElementById('chat-popup');
-      panel.classList.toggle('open');
-      if(panel.classList.contains('open')) {
-        popup.style.display = 'none';
-        document.getElementById('chat-input').focus();
-      }
-    }
-
-    function sendChip(text) {
-      document.getElementById('chat-input').value = text;
-      sendMessage();
-    }
-
-    function addMsg(text, role) {
-      const msgs = document.getElementById('chat-messages');
-      const el = document.createElement('div');
-      el.className = 'msg ' + role;
-      el.textContent = text;
-      msgs.appendChild(el);
-      msgs.scrollTop = msgs.scrollHeight;
-      return el;
-    }
-
-    async function sendMessage() {
-      const input = document.getElementById('chat-input');
-      const text = input.value.trim();
-      if (!text) return;
-
-      input.value = '';
-      document.getElementById('chips').style.display = 'none';
-      addMsg(text, 'user');
-
-      const typing = addMsg('Thinking...', 'bot typing');
-
-      try {
-        const res = await fetch('/api/chat', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ question: text })
-        });
-        const data = await res.json();
-        const reply = data?.answer || 'Sorry, I could not get a response. Please try again!';
-        typing.classList.remove('typing');
-        typing.textContent = reply;
-      } catch (e) {
-        typing.textContent = 'Connection error. Please check your API key or try again later.';
-        typing.classList.remove('typing');
-      }
-      document.getElementById('chat-messages').scrollTop = 9999;
-    }
-
-    // Auto-show popup after delay
-    setTimeout(() => {
-      if(!document.getElementById('chat-panel').classList.contains('open')) {
-        document.getElementById('chat-popup').style.opacity = '1';
-      }
-    }, 3000);
-  </script>
+  </main>
 </body>
 </html>
