@@ -29,11 +29,24 @@ export default async function handler(req, res) {
         max_tokens: 400
       })
     });
+
     const data = await response.json();
-    const answer = data?.choices?.[0]?.message?.content || 'I could not get a response. Please try again!';
+    console.log('OpenRouter status:', response.status);
+    console.log('OpenRouter response:', JSON.stringify(data).slice(0, 500));
+
+    if (data.error) {
+      console.error('OpenRouter error:', data.error);
+      return res.status(200).json({ answer: `Error from AI: ${data.error.message || JSON.stringify(data.error)}` });
+    }
+
+    const answer = data?.choices?.[0]?.message?.content;
+    if (!answer) {
+      return res.status(200).json({ answer: 'The AI returned an empty response. Please try again.' });
+    }
+
     return res.status(200).json({ answer });
   } catch (err) {
-    console.error(err);
+    console.error('Function error:', err);
     return res.status(500).json({ error: 'Error contacting AI service' });
   }
 }
