@@ -37,47 +37,82 @@
   </style>
 </head>
 <body>
-<nav>
-  <div class="logo">&#x1F9E0; BioMind</div>
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="explore.html">Explore</a></li>
-    <li><a href="learn.html">Learn</a></li>
-    <li><a href="about.html" class="active">About</a></li>
-  </ul>
-</nav>
-<section class="hero">
-  <h1>About BioMind</h1>
-  <p>An open educational project that pairs clear science with modern AI to make the human body and mind accessible to everyone.</p>
-</section>
-<main class="wrap">
-  <section class="card">
-    <h2>&#x1F3AF; Our Mission</h2>
-    <p>BioMind exists to lower the barrier to high-quality knowledge about biology, neuroscience, psychology, and wellbeing. Too often, these subjects feel locked behind jargon or expensive textbooks. We want to change that.</p>
-    <p>By combining concise topic summaries with an on-page AI assistant, BioMind lets you learn at your own pace, ask follow-up questions in plain language, and connect ideas across different fields of science.</p>
-  </section>
-  <section class="card">
-    <h2>&#x2728; What You Can Do Here</h2>
-    <div class="feature-grid">
-      <div class="feature"><div class="feature-icon">&#x1F52D;</div><h3>Explore Topics</h3><p>Browse curated cards across Biology, Neuroscience, Psychology &amp; Wellness.</p></div>
-      <div class="feature"><div class="feature-icon">&#x1F916;</div><h3>Ask the AI</h3><p>Chat with BioMind AI for simple explanations, analogies, or study plans.</p></div>
-      <div class="feature"><div class="feature-icon">&#x1F4CB;</div><h3>Follow Tracks</h3><p>Use the Learn page for structured pathways from beginner to advanced.</p></div>
-      <div class="feature"><div class="feature-icon">&#x1F50D;</div><h3>Search &amp; Filter</h3><p>Quickly find topics by keyword or category using the live search tool.</p></div>
-    </div>
-  </section>
-  <section class="card">
-    <h2>&#x1F4BB; The Technology</h2>
-    <p>BioMind is a static web application hosted on <a href="https://vercel.com" class="link" target="_blank">Vercel</a> and version-controlled on <a href="https://github.com/Dinerpordin/biomind-ai" class="link" target="_blank">GitHub</a>.</p>
-    <p>The AI assistant is powered by <strong>Mistral 7B Instruct</strong> via <a href="https://openrouter.ai" class="link" target="_blank">OpenRouter</a>. User queries are routed through a secure Vercel serverless function &mdash; the API key is never exposed in the browser.</p>
-    <div><span class="tag">Vercel</span><span class="tag">GitHub</span><span class="tag">OpenRouter</span><span class="tag">Mistral 7B</span><span class="tag">Vanilla JS</span><span class="tag">HTML/CSS</span></div>
-    <div class="disclaimer"><strong>&#x26A0;&#xFE0F; Disclaimer:</strong> BioMind AI is designed for educational use. Responses may sometimes be inaccurate or oversimplified. Always consult qualified professionals for medical or health decisions.</div>
-  </section>
-  <section class="card">
-    <h2>&#x1F91D; Get Involved</h2>
-    <p>BioMind is open source. If you&rsquo;d like to contribute new topic cards, improve the design, or suggest features, the repository is open at <a href="https://github.com/Dinerpordin/biomind-ai" class="link" target="_blank">github.com/Dinerpordin/biomind-ai</a>.</p>
-    <p>Ready to start learning? <a href="explore.html" class="link">Head to the Explore page &rarr;</a></p>
-  </section>
-</main>
-<footer>&#169; 2026 BioMind. All rights reserved. | An educational resource for curious minds.</footer>
+
+  <nav>
+    <div class="logo">🧠 BioMind</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="explore.html">Explore</a></li>
+      <li><a href="learn.html">Learn</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <h1>About BioMind</h1>
+    <p>An open educational project that pairs clear science with modern AI to make the human body and mind accessible to everyone.</p>
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <h2>🎯 Our Mission</h2>
+      <p>BioMind exists to lower the barrier to high-quality knowledge about biology, neuroscience, psychology, and wellbeing. Too often, these subjects feel locked behind jargon or expensive textbooks. We want to change that.</p>
+      <p>By combining concise topic summaries with an on-page AI assistant, BioMind lets you learn at your own pace, ask follow-up questions in plain language, and connect ideas across different fields of science.</p>
+    </section>
+
+    <section class="card">
+      <h2>✨ What You Can Do Here</h2>
+      <div class="feature-grid">
+        <div class="feature">
+          <div class="feature-icon">🔭</div>
+          <h3>Explore Topics</h3>
+          <p>Browse curated cards across Biology, Neuroscience, Psychology & Wellness.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🤖</div>
+          <h3>Ask the AI</h3>
+          <p>Chat with BioMind AI for simple explanations, analogies, or study plans.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">📋</div>
+          <h3>Follow Tracks</h3>
+          <p>Use the Learn page for structured pathways from beginner to advanced.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🔍</div>
+          <h3>Search & Filter</h3>
+          <p>Quickly find topics by keyword or category using the live search tool.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>💻 The Technology</h2>
+      <p>BioMind is a static web application hosted on <a href="https://vercel.com" class="link">Vercel</a> and version-controlled on <a href="https://github.com/Dinerpordin/biomind-ai" class="link">GitHub</a>.</p>
+      <p>The AI assistant is powered by <strong>Mistral 7B Instruct</strong> via <a href="https://openrouter.ai" class="link">OpenRouter</a>. User queries are routed through a secure Vercel serverless function — the API key is never exposed in the browser.</p>
+      <div style="margin-top: 1rem;">
+        <span class="tag">Vercel</span> <span class="tag">GitHub</span> <span class="tag">OpenRouter</span> <span class="tag">Mistral 7B</span> <span class="tag">Vanilla JS</span> <span class="tag">HTML/CSS</span>
+      </div>
+      <div class="disclaimer">
+        <strong>⚠️ Disclaimer:</strong> BioMind AI is designed for educational use. Responses may sometimes be inaccurate or oversimplified. Always consult qualified professionals for medical or health decisions.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>👤 Developer</h2>
+      <p>This project was developed and published by <strong>Ruponti Rahman</strong>.</p>
+    </section>
+
+    <section class="card">
+      <h2>🤝 Get Involved</h2>
+      <p>BioMind is open source. If you’d like to contribute new topic cards, improve the design, or suggest features, the repository is open at <a href="https://github.com/Dinerpordin/biomind-ai" class="link">github.com/Dinerpordin/biomind-ai</a>.</p>
+      <p>Ready to start learning? <a href="explore.html" class="link">Head to the Explore page →</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 BioMind. All rights reserved. | Developed by Ruponti Rahman</p>
+  </footer>
+
 </body>
 </html>
