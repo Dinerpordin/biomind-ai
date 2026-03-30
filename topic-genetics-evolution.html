@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Genetics &amp; Evolution - BioMind</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0f1e;--surface:#111827;--card:#1a2234;--border:#2a3550;--accent:#6366f1;--accent2:#22d3ee;--text:#e2e8f0;--muted:#94a3b8;--radius:16px}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+nav{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5%;background:rgba(17,24,39,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.logo{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+nav ul{list-style:none;display:flex;gap:2.5rem}
+nav a{color:var(--muted);text-decoration:none;font-weight:500;font-size:.95rem;transition:color .2s}
+nav a:hover,nav a.active{color:var(--text)}
+nav a.active{color:var(--accent2);border-bottom:2px solid var(--accent2);padding-bottom:4px}
+.hero{text-align:center;padding:5rem 1rem 3rem;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(99,102,241,.15),transparent)}
+.hero-tag{display:inline-block;background:rgba(99,102,241,.15);color:var(--accent2);padding:6px 18px;border-radius:30px;font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:1.5rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.5rem);font-weight:800;margin-bottom:1.2rem;background:linear-gradient(135deg,#fff 40%,var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-1px}
+.hero p{font-size:1.15rem;color:var(--muted);line-height:1.8;max-width:780px;margin:0 auto 2rem}
+.back-link{display:inline-flex;align-items:center;gap:.5rem;color:var(--accent2);text-decoration:none;font-weight:600;margin-bottom:2rem;transition:gap .2s}
+.back-link:hover{gap:.8rem}
+.content{max-width:900px;margin:0 auto;padding:0 5% 6rem}
+.section{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2.5rem;margin-bottom:2rem}
+.section h2{font-family:'Playfair Display',serif;font-size:1.8rem;color:#fff;margin-bottom:1.2rem;padding-bottom:.8rem;border-bottom:2px solid var(--accent)}
+.section h3{font-size:1.2rem;font-weight:700;color:var(--accent2);margin:1.5rem 0 .7rem}
+.section p{color:var(--muted);line-height:1.8;margin-bottom:1rem}
+.section ul{color:var(--muted);line-height:1.9;padding-left:1.5rem}
+.section ul li{margin-bottom:.4rem}
+.ref-box{background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.25);border-radius:12px;padding:2rem;margin-top:1rem}
+.ref-box h3{color:var(--accent2);margin-bottom:1rem;font-size:1.1rem}
+.ref-box ol{padding-left:1.4rem;color:var(--muted);line-height:1.9;font-size:.92rem}
+.ref-box ol li{margin-bottom:.5rem}
+.ref-box a{color:var(--accent2);text-decoration:none}
+.ref-box a:hover{text-decoration:underline}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1.2rem;margin:1.5rem 0}
+.stat-card{background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2);border-radius:12px;padding:1.2rem;text-align:center}
+.stat-card .num{font-size:2rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-card .lbl{font-size:.85rem;color:var(--muted);margin-top:.3rem}
+footer{text-align:center;padding:3rem 2rem;background:var(--surface);border-top:1px solid var(--border);color:var(--muted)}
+footer strong{color:var(--text)}
+@media(max-width:768px){nav ul{display:none}}
+</style>
+</head>
+<body>
+<nav>
+<a class="logo" href="index.html">&#129504; BioMind</a>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="explore.html" class="active">Explore</a></li>
+<li><a href="learn.html">Learn</a></li>
+<li><a href="about.html">About</a></li>
+</ul>
+</nav>
+<section class="hero">
+<span class="hero-tag">Biology</span>
+<h1>Genetics &amp; Evolution</h1>
+<p>Understand the science of heredity, chromosome patterns, and the mechanisms behind species evolution over millions of years. From Mendel&rsquo;s peas to CRISPR, genetics has transformed our understanding of life.</p>
+<a class="back-link" href="explore.html">&larr; Back to Explore</a>
+</section>
+<div class="content">
+<div class="stats-grid">
+<div class="stat-card"><div class="num">20-25K</div><div class="lbl">Human genes</div></div>
+<div class="stat-card"><div class="num">99.9%</div><div class="lbl">DNA identical between humans</div></div>
+<div class="stat-card"><div class="num">3.8B</div><div class="lbl">Years of evolution</div></div>
+<div class="stat-card"><div class="num">46</div><div class="lbl">Human chromosomes</div></div>
+</div>
+<div class="section">
+<h2>Foundations of Genetics</h2>
+<p>Genetics is the scientific study of heredity and genetic variation. Gregor Mendel established foundational principles in the 1860s through his pea plant experiments, demonstrating that traits are inherited in discrete units (now called genes) according to predictable ratios. His laws of segregation and independent assortment remain central to classical genetics.</p>
+<h3>DNA Structure and the Genetic Code</h3>
+<p>Deoxyribonucleic acid (DNA) is a double-helix polymer composed of four nucleotide bases: adenine (A), thymine (T), guanine (G), and cytosine (C). The sequence of these bases encodes genetic information. The genetic code is a triplet code: each codon (three consecutive bases) specifies one amino acid or a stop signal. The human genome contains approximately 3 billion base pairs encoding an estimated 20,000&ndash;25,000 protein-coding genes.</p>
+<h3>Gene Expression: Transcription and Translation</h3>
+<p>Gene expression involves two major steps: <strong>transcription</strong> (DNA is copied into mRNA by RNA polymerase in the nucleus) and <strong>translation</strong> (mRNA is decoded by ribosomes to produce a protein). Gene expression is tightly regulated through promoters, enhancers, transcription factors, and epigenetic mechanisms.</p>
+</div>
+<div class="section">
+<h2>Inheritance Patterns</h2>
+<p>Beyond Mendelian inheritance, genes can display more complex patterns:</p>
+<ul>
+<li><strong>Autosomal dominant:</strong> One copy of a mutant allele causes disease (e.g., Huntington&rsquo;s disease).</li>
+<li><strong>Autosomal recessive:</strong> Two copies required (e.g., cystic fibrosis, sickle cell anaemia).</li>
+<li><strong>X-linked recessive:</strong> Mutations on the X chromosome affect males more often (e.g., haemophilia, colour blindness).</li>
+<li><strong>Codominance:</strong> Both alleles are expressed simultaneously (e.g., ABO blood groups).</li>
+<li><strong>Incomplete dominance:</strong> Heterozygote shows an intermediate phenotype.</li>
+<li><strong>Polygenic traits:</strong> Traits controlled by multiple genes (e.g., height, skin colour, intelligence).</li>
+</ul>
+<h3>Epigenetics</h3>
+<p>Epigenetics refers to heritable changes in gene expression that do not involve changes to the DNA sequence itself. Key mechanisms include DNA methylation (typically silencing gene expression), histone modification (acetylation, methylation, phosphorylation), and non-coding RNA regulation. Environmental factors including diet, stress, and toxin exposure can alter the epigenome.</p>
+</div>
+<div class="section">
+<h2>Mechanisms of Evolution</h2>
+<p>Charles Darwin and Alfred Russel Wallace independently proposed natural selection as the primary mechanism of evolution in 1858. Modern evolutionary theory (the Modern Synthesis) integrates Darwinian selection with Mendelian genetics and molecular biology.</p>
+<h3>The Four Forces of Evolution</h3>
+<ul>
+<li><strong>Natural Selection:</strong> Differential reproductive success based on heritable traits that affect fitness in a given environment. Leads to adaptation.</li>
+<li><strong>Genetic Drift:</strong> Random fluctuations in allele frequencies, especially impactful in small populations. Founder effect and bottleneck effect are special cases.</li>
+<li><strong>Gene Flow (Migration):</strong> Transfer of genetic material between populations through migration, reducing genetic differences between populations.</li>
+<li><strong>Mutation:</strong> Random changes in DNA sequence; the ultimate source of all new genetic variation.</li>
+</ul>
+<h3>Speciation</h3>
+<p>Speciation is the process by which new species arise. <strong>Allopatric speciation</strong> occurs when populations become geographically isolated; <strong>sympatric speciation</strong> occurs without geographic separation, often through polyploidy in plants or ecological divergence. The biological species concept defines a species as a group of organisms capable of interbreeding and producing fertile offspring.</p>
+</div>
+<div class="section">
+<h2>Genomics and Genetic Technology</h2>
+<p>The Human Genome Project (completed in 2003) sequenced the entire human genome for the first time. Next-generation sequencing (NGS) technologies have dramatically reduced sequencing costs, enabling personalised medicine, population genomics, and ancient DNA analysis.</p>
+<h3>CRISPR-Cas9</h3>
+<p>CRISPR-Cas9, adapted from a bacterial immune defence system, enables precise editing of DNA sequences in virtually any organism. It has revolutionised biomedical research and holds promise for treating genetic diseases including sickle cell anaemia, beta-thalassaemia, and certain cancers. Jennifer Doudna and Emmanuelle Charpentier were awarded the Nobel Prize in Chemistry in 2020 for its development.</p>
+<div class="ref-box">
+<h3>References &amp; Further Reading</h3>
+<ol>
+<li>Watson JD, Crick FH. Molecular structure of nucleic acids. <em>Nature</em>. 1953;171:737-738. <a href="https://pubmed.ncbi.nlm.nih.gov/13054692/" target="_blank">PubMed</a></li>
+<li>International Human Genome Sequencing Consortium. Initial sequencing and analysis of the human genome. <em>Nature</em>. 2001;409:860-921.</li>
+<li>Jinek M, et al. A programmable dual-RNA-guided DNA endonuclease in adaptive bacterial immunity. <em>Science</em>. 2012;337:816-821. <a href="https://pubmed.ncbi.nlm.nih.gov/22745249/" target="_blank">PubMed</a></li>
+<li>Darwin C. <em>On the Origin of Species</em>. John Murray, 1859.</li>
+<li>NIH National Human Genome Research Institute. <em>Genetics Basics</em>. <a href="https://www.genome.gov/genetics-glossary" target="_blank">genome.gov</a></li>
+<li>Griffiths AJF, et al. <em>Introduction to Genetic Analysis</em>, 12th ed. W.H. Freeman, 2020.</li>
+</ol>
+</div>
+</div>
+</div>
+<footer>
+<p>&copy; 2026 <strong>BioMind</strong>. All rights reserved. | Developed by <strong>Ruponti Rahman</strong></p>
+</footer>
+</body>
+</html>
