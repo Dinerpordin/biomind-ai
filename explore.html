@@ -4,6 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Explore Topics - BioMind</title>
+  <meta name="theme-color" content="#3b82f6" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="BioMind" />
+  <meta name="description" content="Explore topics about the human body and mind" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
@@ -129,6 +136,78 @@
       line-height: 1.7;
       max-width: 800px;
       margin: 0 auto 3rem;
+    }
+
+    /* PWA install */
+    .pwa-install-wrap {
+      max-width: 520px;
+      margin: 0 auto 2rem;
+      padding: 0 1rem;
+      text-align: center;
+    }
+    .pwa-install-wrap.pwa-hidden {
+      display: none;
+    }
+    .pwa-install-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0.95rem 2rem;
+      width: 100%;
+      max-width: 340px;
+      border: none;
+      border-radius: 14px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #fff;
+      cursor: pointer;
+      background: linear-gradient(135deg, #3b82f6 0%, #0ea5e9 45%, #14b8a6 100%);
+      box-shadow: 0 8px 32px rgba(59, 130, 246, 0.35), 0 0 0 1px rgba(34, 211, 238, 0.2) inset;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    }
+    .pwa-install-btn:hover {
+      filter: brightness(1.06);
+      box-shadow: 0 12px 40px rgba(59, 130, 246, 0.45), 0 0 0 1px rgba(34, 211, 238, 0.35) inset;
+    }
+    .pwa-install-btn:active {
+      transform: scale(0.98);
+    }
+    .pwa-install-btn:focus-visible {
+      outline: 3px solid var(--accent2);
+      outline-offset: 4px;
+    }
+    .pwa-install-btn.pwa-install-btn--disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+      filter: grayscale(0.2);
+    }
+    .pwa-install-note {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.55;
+      margin-top: 0.85rem;
+      max-width: 380px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .pwa-ios-hint {
+      margin-top: 1rem;
+      padding: 1rem 1.2rem;
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.35);
+      border-radius: 12px;
+      color: var(--text);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      text-align: left;
+      max-width: 380px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .pwa-ios-hint[hidden] {
+      display: none !important;
     }
 
     /* SEARCH */
@@ -459,8 +538,15 @@
 
   <header class="hero">
     <h1>Explore Topics</h1>
+    <div class="pwa-install-wrap" id="pwa-install-wrap">
+      <button type="button" id="pwa-install-btn" class="pwa-install-btn" aria-haspopup="true" aria-expanded="false" aria-controls="pwa-ios-hint">Install BioMind App</button>
+      <p class="pwa-install-note">Get the full experience on your home screen – works offline too.</p>
+      <div id="pwa-ios-hint" class="pwa-ios-hint" hidden>
+        <strong>Add BioMind on iPhone or iPad:</strong> Tap the <strong>Share</strong> button <span aria-hidden="true">(□↑)</span>, then choose <strong>Add to Home Screen</strong>.
+      </div>
+    </div>
     <p>Dive deep into the science of the human body and mind. Filter by category, search for specific interests, or ask our AI assistant for instant insights.</p>
-    
+
     <div class="search-wrap">
       <div class="search-box">
         <span class="search-icon">🔍</span>
@@ -707,6 +793,59 @@
         if (popup) popup.style.opacity = '1';
       }
     }, 4000);
+
+    // ---- PWA: service worker + install ----
+    (function () {
+      var wrap = document.getElementById('pwa-install-wrap');
+      var installBtn = document.getElementById('pwa-install-btn');
+      var iosHint = document.getElementById('pwa-ios-hint');
+      if (!wrap || !installBtn || !iosHint) return;
+
+      var standalone =
+        window.matchMedia('(display-mode: standalone)').matches ||
+        window.navigator.standalone === true;
+      if (standalone) {
+        wrap.classList.add('pwa-hidden');
+        return;
+      }
+
+      function isIOS() {
+        if (/iPad|iPhone|iPod/.test(navigator.userAgent)) return true;
+        return navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
+      }
+
+      var deferredPrompt = null;
+
+      window.addEventListener('beforeinstallprompt', function (e) {
+        e.preventDefault();
+        deferredPrompt = e;
+      });
+
+      installBtn.addEventListener('click', function () {
+        if (isIOS()) {
+          var willShow = iosHint.hidden;
+          iosHint.hidden = !willShow;
+          installBtn.setAttribute('aria-expanded', willShow ? 'true' : 'false');
+          return;
+        }
+        iosHint.hidden = true;
+        installBtn.setAttribute('aria-expanded', 'false');
+        if (!deferredPrompt) {
+          window.alert(
+            'Install isn’t available in this browser window. Try Google Chrome on Android (look for “Install app” in the menu), Microsoft Edge, or on iPhone/iPad use Safari: tap Share → Add to Home Screen.'
+          );
+          return;
+        }
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.finally(function () {
+          deferredPrompt = null;
+        });
+      });
+
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js').catch(function () {});
+      }
+    })();
 
     (function () {
       var nav = document.getElementById('site-nav');
