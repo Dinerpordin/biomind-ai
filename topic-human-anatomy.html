@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Human Anatomy - BioMind</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0f1e;--surface:#111827;--card:#1a2234;--border:#2a3550;--accent:#6366f1;--accent2:#22d3ee;--text:#e2e8f0;--muted:#94a3b8;--radius:16px}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+nav{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5%;background:rgba(17,24,39,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.logo{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+nav ul{list-style:none;display:flex;gap:2.5rem}
+nav a{color:var(--muted);text-decoration:none;font-weight:500;font-size:.95rem;transition:color .2s}
+nav a:hover,nav a.active{color:var(--text)}
+nav a.active{color:var(--accent2);border-bottom:2px solid var(--accent2);padding-bottom:4px}
+.hero{text-align:center;padding:5rem 1rem 3rem;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(99,102,241,.15),transparent)}
+.hero-tag{display:inline-block;background:rgba(99,102,241,.15);color:var(--accent2);padding:6px 18px;border-radius:30px;font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:1.5rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.5rem);font-weight:800;margin-bottom:1.2rem;background:linear-gradient(135deg,#fff 40%,var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-1px}
+.hero p{font-size:1.15rem;color:var(--muted);line-height:1.8;max-width:780px;margin:0 auto 2rem}
+.back-link{display:inline-flex;align-items:center;gap:.5rem;color:var(--accent2);text-decoration:none;font-weight:600;margin-bottom:2rem;transition:gap .2s}
+.back-link:hover{gap:.8rem}
+.content{max-width:900px;margin:0 auto;padding:0 5% 6rem}
+.section{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2.5rem;margin-bottom:2rem}
+.section h2{font-family:'Playfair Display',serif;font-size:1.8rem;color:#fff;margin-bottom:1.2rem;padding-bottom:.8rem;border-bottom:2px solid var(--accent)}
+.section h3{font-size:1.2rem;font-weight:700;color:var(--accent2);margin:1.5rem 0 .7rem}
+.section p{color:var(--muted);line-height:1.8;margin-bottom:1rem}
+.section ul{color:var(--muted);line-height:1.9;padding-left:1.5rem}
+.section ul li{margin-bottom:.4rem}
+.ref-box{background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.25);border-radius:12px;padding:2rem;margin-top:1rem}
+.ref-box h3{color:var(--accent2);margin-bottom:1rem;font-size:1.1rem}
+.ref-box ol{padding-left:1.4rem;color:var(--muted);line-height:1.9;font-size:.92rem}
+.ref-box ol li{margin-bottom:.5rem}
+.ref-box a{color:var(--accent2);text-decoration:none}
+.ref-box a:hover{text-decoration:underline}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1.2rem;margin:1.5rem 0}
+.stat-card{background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2);border-radius:12px;padding:1.2rem;text-align:center}
+.stat-card .num{font-size:2rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-card .lbl{font-size:.85rem;color:var(--muted);margin-top:.3rem}
+footer{text-align:center;padding:3rem 2rem;background:var(--surface);border-top:1px solid var(--border);color:var(--muted)}
+footer strong{color:var(--text)}
+@media(max-width:768px){nav ul{display:none}}
+</style>
+</head>
+<body>
+<nav>
+<a class="logo" href="index.html">&#129504; BioMind</a>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="explore.html" class="active">Explore</a></li>
+<li><a href="learn.html">Learn</a></li>
+<li><a href="about.html">About</a></li>
+</ul>
+</nav>
+<section class="hero">
+<span class="hero-tag">Biology</span>
+<h1>Human Anatomy</h1>
+<p>A comprehensive guide to the structure of the human body &mdash; from bones and muscles to intricate organ systems. Understand how form follows function across every tissue and system in the body.</p>
+<a class="back-link" href="explore.html">&larr; Back to Explore</a>
+</section>
+<div class="content">
+<div class="stats-grid">
+<div class="stat-card"><div class="num">206</div><div class="lbl">Bones in adult body</div></div>
+<div class="stat-card"><div class="num">640</div><div class="lbl">Skeletal muscles</div></div>
+<div class="stat-card"><div class="num">11</div><div class="lbl">Organ systems</div></div>
+<div class="stat-card"><div class="num">78</div><div class="lbl">Named organs</div></div>
+</div>
+<div class="section">
+<h2>The Skeletal System</h2>
+<p>The human skeleton forms the structural framework of the body, providing support, protection for internal organs, and the mechanical leverage required for movement. In adults, the skeleton comprises 206 bones, although newborns have approximately 270 bones that fuse over time.</p>
+<h3>Bone Composition and Remodelling</h3>
+<p>Bone is a dynamic living tissue composed of an organic matrix (primarily type I collagen) and inorganic mineral crystals (mainly hydroxyapatite). Osteoblasts build new bone tissue while osteoclasts break down old bone in a continuous remodelling process. Peak bone mass is typically reached in the late 20s and is influenced by nutrition (calcium and vitamin D), physical activity, and hormonal status.</p>
+<h3>Joints and Articulations</h3>
+<p>Joints are classified by structure (fibrous, cartilaginous, synovial) and by the range of movement they permit. Synovial joints, the most mobile type, are lined with articular cartilage and filled with synovial fluid that lubricates the joint surface. Common joint types include hinge joints (elbow, knee), ball-and-socket joints (hip, shoulder), and pivot joints (neck).</p>
+</div>
+<div class="section">
+<h2>The Muscular System</h2>
+<p>The body contains three types of muscle tissue: <strong>skeletal muscle</strong> (voluntary, striated, attached to bones), <strong>smooth muscle</strong> (involuntary, found in organ walls and blood vessels), and <strong>cardiac muscle</strong> (involuntary, forms the heart wall). The approximately 640 named skeletal muscles work in antagonistic pairs to produce coordinated movement.</p>
+<h3>Muscle Contraction: The Sliding Filament Theory</h3>
+<p>Muscle contraction occurs when actin and myosin filaments within sarcomeres slide past one another. An action potential triggers calcium release from the sarcoplasmic reticulum; calcium binds troponin, exposing binding sites on actin. Myosin heads attach, pull, and release in a cyclic power stroke powered by ATP hydrolysis.</p>
+</div>
+<div class="section">
+<h2>The Cardiovascular System</h2>
+<p>The cardiovascular system consists of the heart, approximately 100,000 km of blood vessels, and 5 litres of blood. The heart pumps about 70 mL per beat and around 5 litres per minute at rest, totalling roughly 2 billion beats over a lifetime.</p>
+<h3>Circulation Pathways</h3>
+<p><strong>Pulmonary circulation</strong> carries deoxygenated blood from the right ventricle to the lungs for gas exchange, returning oxygenated blood to the left atrium. <strong>Systemic circulation</strong> distributes oxygenated blood from the left ventricle to the body and returns deoxygenated blood to the right atrium via the venae cavae.</p>
+<h3>Blood Pressure and Regulation</h3>
+<p>Blood pressure is regulated by cardiac output, peripheral vascular resistance, and blood volume. The renin-angiotensin-aldosterone system (RAAS) and the autonomic nervous system play key roles in homeostatic control. Chronic hypertension damages vessel walls and is a major risk factor for stroke and myocardial infarction.</p>
+</div>
+<div class="section">
+<h2>The Nervous System</h2>
+<p>The nervous system is divided into the <strong>central nervous system (CNS)</strong> &mdash; comprising the brain and spinal cord &mdash; and the <strong>peripheral nervous system (PNS)</strong>, which includes all nerves outside the CNS. The PNS is further divided into the somatic (voluntary) and autonomic (involuntary) nervous systems, with the autonomic system subdivided into sympathetic and parasympathetic branches.</p>
+<h3>The Spinal Cord and Reflexes</h3>
+<p>The spinal cord carries sensory information to the brain and motor commands from the brain to the muscles. Reflex arcs bypass the brain for rapid responses: a sensory neuron synapses directly onto a motor neuron within the spinal cord, enabling sub-100ms responses that protect the body from injury.</p>
+</div>
+<div class="section">
+<h2>Organ Systems Overview</h2>
+<ul>
+<li><strong>Respiratory System:</strong> Exchanges O2 and CO2; the lungs have approximately 480 million alveoli providing ~70 m&sup2; of surface area.</li>
+<li><strong>Digestive System:</strong> Breaks down food and absorbs nutrients; the small intestine alone is ~6-7 m long with ~250 m&sup2; of absorptive surface.</li>
+<li><strong>Endocrine System:</strong> Glands secrete hormones that regulate metabolism, growth, reproduction, and homeostasis.</li>
+<li><strong>Urinary System:</strong> Kidneys filter ~180 litres of blood plasma per day, producing ~1.5 litres of urine.</li>
+<li><strong>Immune/Lymphatic System:</strong> Defends against pathogens; lymph nodes filter lymphatic fluid and house immune cells.</li>
+<li><strong>Integumentary System:</strong> Skin is the largest organ (~1.7-2.0 m&sup2;), regulating temperature, preventing water loss, and sensing the environment.</li>
+<li><strong>Reproductive System:</strong> Produces gametes and sex hormones; supports foetal development in females.</li>
+</ul>
+<div class="ref-box">
+<h3>References &amp; Further Reading</h3>
+<ol>
+<li>Gray H. <em>Gray&rsquo;s Anatomy</em>, 41st ed. Elsevier, 2015.</li>
+<li>Tortora GJ, Derrickson B. <em>Principles of Anatomy and Physiology</em>, 15th ed. Wiley, 2017.</li>
+<li>Netter FH. <em>Atlas of Human Anatomy</em>, 7th ed. Elsevier, 2018.</li>
+<li>NIH National Library of Medicine. <em>MedlinePlus: Body Systems</em>. <a href="https://medlineplus.gov" target="_blank">medlineplus.gov</a></li>
+<li>Marieb EN, Hoehn K. <em>Human Anatomy &amp; Physiology</em>, 11th ed. Pearson, 2018.</li>
+<li>Standring S, ed. <em>Gray&rsquo;s Anatomy: The Anatomical Basis of Clinical Practice</em>. Elsevier, 2020.</li>
+</ol>
+</div>
+</div>
+</div>
+<footer>
+<p>&copy; 2026 <strong>BioMind</strong>. All rights reserved. | Developed by <strong>Ruponti Rahman</strong></p>
+</footer>
+</body>
+</html>
