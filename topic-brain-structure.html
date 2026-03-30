@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Brain Structure - BioMind</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0f1e;--surface:#111827;--card:#1a2234;--border:#2a3550;--accent:#6366f1;--accent2:#22d3ee;--text:#e2e8f0;--muted:#94a3b8;--radius:16px}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+nav{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5%;background:rgba(17,24,39,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.logo{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+nav ul{list-style:none;display:flex;gap:2.5rem}
+nav a{color:var(--muted);text-decoration:none;font-weight:500;font-size:.95rem;transition:color .2s}
+nav a:hover,nav a.active{color:var(--text)}
+nav a.active{color:var(--accent2);border-bottom:2px solid var(--accent2);padding-bottom:4px}
+.hero{text-align:center;padding:5rem 1rem 3rem;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(99,102,241,.15),transparent)}
+.hero-tag{display:inline-block;background:rgba(99,102,241,.15);color:var(--accent2);padding:6px 18px;border-radius:30px;font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:1.5rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.5rem);font-weight:800;margin-bottom:1.2rem;background:linear-gradient(135deg,#fff 40%,var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-1px}
+.hero p{font-size:1.15rem;color:var(--muted);line-height:1.8;max-width:780px;margin:0 auto 2rem}
+.back-link{display:inline-flex;align-items:center;gap:.5rem;color:var(--accent2);text-decoration:none;font-weight:600;margin-bottom:2rem;transition:gap .2s}
+.back-link:hover{gap:.8rem}
+.content{max-width:900px;margin:0 auto;padding:0 5% 6rem}
+.section{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2.5rem;margin-bottom:2rem}
+.section h2{font-family:'Playfair Display',serif;font-size:1.8rem;color:#fff;margin-bottom:1.2rem;padding-bottom:.8rem;border-bottom:2px solid var(--accent)}
+.section h3{font-size:1.2rem;font-weight:700;color:var(--accent2);margin:1.5rem 0 .7rem}
+.section p{color:var(--muted);line-height:1.8;margin-bottom:1rem}
+.section ul{color:var(--muted);line-height:1.9;padding-left:1.5rem}
+.section ul li{margin-bottom:.4rem}
+.ref-box{background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.25);border-radius:12px;padding:2rem;margin-top:1rem}
+.ref-box h3{color:var(--accent2);margin-bottom:1rem;font-size:1.1rem}
+.ref-box ol{padding-left:1.4rem;color:var(--muted);line-height:1.9;font-size:.92rem}
+.ref-box ol li{margin-bottom:.5rem}
+.ref-box a{color:var(--accent2);text-decoration:none}
+.ref-box a:hover{text-decoration:underline}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1.2rem;margin:1.5rem 0}
+.stat-card{background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2);border-radius:12px;padding:1.2rem;text-align:center}
+.stat-card .num{font-size:2rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-card .lbl{font-size:.85rem;color:var(--muted);margin-top:.3rem}
+footer{text-align:center;padding:3rem 2rem;background:var(--surface);border-top:1px solid var(--border);color:var(--muted)}
+footer strong{color:var(--text)}
+@media(max-width:768px){nav ul{display:none}}
+</style>
+</head>
+<body>
+<nav>
+<a class="logo" href="index.html">&#129504; BioMind</a>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="explore.html" class="active">Explore</a></li>
+<li><a href="learn.html">Learn</a></li>
+<li><a href="about.html">About</a></li>
+</ul>
+</nav>
+<section class="hero">
+<span class="hero-tag">Neuroscience</span>
+<h1>Brain Structure</h1>
+<p>Discover the specialised regions of the human brain and their critical roles in processing behaviour, sensation, and thought. From the ancient brainstem to the uniquely human prefrontal cortex, explore the architecture of consciousness.</p>
+<a class="back-link" href="explore.html">&larr; Back to Explore</a>
+</section>
+<div class="content">
+<div class="stats-grid">
+<div class="stat-card"><div class="num">86B</div><div class="lbl">Neurons in the brain</div></div>
+<div class="stat-card"><div class="num">1.4kg</div><div class="lbl">Average brain weight</div></div>
+<div class="stat-card"><div class="num">100T</div><div class="lbl">Synaptic connections</div></div>
+<div class="stat-card"><div class="num">20%</div><div class="lbl">Body energy used by brain</div></div>
+</div>
+<div class="section">
+<h2>Overview of Brain Organisation</h2>
+<p>The human brain is the most complex biological structure known, weighing approximately 1.4 kg and containing roughly 86 billion neurons interconnected by an estimated 100 trillion synaptic connections. It is divided into three major parts: the <strong>forebrain</strong> (cerebrum and diencephalon), the <strong>midbrain</strong>, and the <strong>hindbrain</strong> (cerebellum, pons, and medulla oblongata).</p>
+<h3>Cerebral Cortex</h3>
+<p>The cerebral cortex is the outermost layer of the cerebrum, consisting of grey matter (neuronal cell bodies) organised into six layers. It is divided into four lobes in each hemisphere: frontal, parietal, temporal, and occipital. The cortex is responsible for higher cognitive functions including language, reasoning, perception, and voluntary movement.</p>
+</div>
+<div class="section">
+<h2>The Four Lobes</h2>
+<ul>
+<li><strong>Frontal Lobe:</strong> Houses the primary motor cortex (controlling voluntary movement), Broca&rsquo;s area (speech production), and the prefrontal cortex (executive function, working memory, decision-making, and personality). Damage leads to personality changes, impaired planning, and motor deficits.</li>
+<li><strong>Parietal Lobe:</strong> Contains the primary somatosensory cortex, which processes touch, proprioception, and pain. Also involved in spatial reasoning and integration of sensory information. The homunculus maps body regions to cortical areas by sensitivity.</li>
+<li><strong>Temporal Lobe:</strong> Processes auditory information, language comprehension (Wernicke&rsquo;s area), and memory consolidation (via the hippocampus). The inferior temporal cortex is critical for face and object recognition.</li>
+<li><strong>Occipital Lobe:</strong> The primary visual cortex (V1) receives raw visual input from the retina via the thalamus. Higher visual areas (V2&ndash;V5) process motion, colour, depth, and object identity.</li>
+</ul>
+</div>
+<div class="section">
+<h2>Deep Brain Structures</h2>
+<h3>The Limbic System</h3>
+<p>The limbic system is a set of interconnected structures that regulate emotion, memory, and motivation. Key components include:</p>
+<ul>
+<li><strong>Hippocampus:</strong> Critical for forming new explicit (declarative) memories and spatial navigation. Severely damaged in Alzheimer&rsquo;s disease.</li>
+<li><strong>Amygdala:</strong> Processes fear and emotional responses; involved in attaching emotional significance to memories. Hyperactivity is associated with anxiety disorders and PTSD.</li>
+<li><strong>Hypothalamus:</strong> Regulates homeostatic functions including hunger, thirst, temperature, circadian rhythms, and hormonal output via the pituitary gland.</li>
+<li><strong>Thalamus:</strong> The brain&rsquo;s relay station; routes sensory information (except olfaction) to appropriate cortical areas.</li>
+</ul>
+<h3>Basal Ganglia</h3>
+<p>The basal ganglia are a group of subcortical nuclei (including the striatum, globus pallidus, substantia nigra, and subthalamic nucleus) that modulate movement, procedural learning, and habit formation. Degeneration of dopaminergic neurons in the substantia nigra causes Parkinson&rsquo;s disease; dysfunction of the striatum is implicated in Huntington&rsquo;s disease and addiction.</p>
+<h3>Cerebellum</h3>
+<p>The cerebellum accounts for only ~10% of brain volume but contains approximately 50% of all neurons. It coordinates movement, balance, and fine motor skills, and is increasingly recognised as involved in cognitive and emotional processing. Cerebellar damage causes ataxia (loss of coordination).</p>
+</div>
+<div class="section">
+<h2>The Brainstem</h2>
+<p>The brainstem (midbrain, pons, and medulla oblongata) connects the cerebrum to the spinal cord and controls vital autonomic functions including respiration, heart rate, blood pressure, and consciousness. The reticular activating system (RAS) within the brainstem regulates arousal and sleep-wake transitions. Cranial nerves III&ndash;XII originate in the brainstem.</p>
+<div class="ref-box">
+<h3>References &amp; Further Reading</h3>
+<ol>
+<li>Kandel ER, et al. <em>Principles of Neural Science</em>, 6th ed. McGraw-Hill, 2021.</li>
+<li>Azevedo FAC, et al. Equal numbers of neuronal and nonneuronal cells make the human brain an isometrically scaled-up primate brain. <em>J Comp Neurol</em>. 2009;513(5):532-41. <a href="https://pubmed.ncbi.nlm.nih.gov/19226510/" target="_blank">PubMed</a></li>
+<li>Purves D, et al. <em>Neuroscience</em>, 6th ed. Sinauer Associates, 2018.</li>
+<li>Bear MF, Connors BW, Paradiso MA. <em>Neuroscience: Exploring the Brain</em>, 4th ed. Wolters Kluwer, 2016.</li>
+<li>NIH National Institute of Neurological Disorders and Stroke. <em>Brain Basics</em>. <a href="https://www.ninds.nih.gov/health-information/public-education/brain-basics" target="_blank">ninds.nih.gov</a></li>
+</ol>
+</div>
+</div>
+</div>
+<footer>
+<p>&copy; 2026 <strong>BioMind</strong>. All rights reserved. | Developed by <strong>Ruponti Rahman</strong></p>
+</footer>
+</body>
+</html>
