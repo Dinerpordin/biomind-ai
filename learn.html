@@ -10,11 +10,16 @@
     :root{--bg:#0a0f1e;--surface:#111827;--card:#1a2234;--border:#2a3550;--accent:#6366f1;--accent2:#22d3ee;--text:#e2e8f0;--muted:#94a3b8;--radius:16px}
     *{box-sizing:border-box;margin:0;padding:0}
     body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
-    nav{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2.5rem;background:rgba(17,24,39,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
-    .logo{font-family:'Playfair Display',serif;font-size:1.6rem;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    nav ul{list-style:none;display:flex;gap:2rem}
-    nav a{text-decoration:none;color:var(--muted);font-weight:500;font-size:.95rem;transition:color .2s}
-    nav a:hover,nav a.active{color:var(--accent2)}
+    nav{display:flex;align-items:center;flex-wrap:wrap;gap:.5rem 1rem;padding:1.2rem 2.5rem;background:rgba(17,24,39,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+    .logo{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none}
+    .nav-toggle{display:none;margin-left:auto;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--text);font-size:1.25rem;line-height:1;cursor:pointer;transition:border-color .2s,background .2s}
+    .nav-toggle:hover{border-color:var(--accent);background:var(--card)}
+    .nav-toggle:focus-visible{outline:2px solid var(--accent2);outline-offset:3px}
+    .nav-toggle[aria-expanded="true"]{border-color:var(--accent);background:var(--card)}
+    nav .nav-links{list-style:none;display:flex;gap:2rem;margin:0;padding:0;margin-left:auto;align-items:center}
+    nav .nav-links a{text-decoration:none;color:var(--muted);font-weight:500;font-size:.95rem;transition:color .2s}
+    nav .nav-links a:focus-visible{outline:2px solid var(--accent2);outline-offset:3px;border-radius:2px}
+    nav .nav-links a:hover,nav .nav-links a.active{color:var(--accent2)}
     .hero{text-align:center;padding:5rem 1rem 3rem;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(99,102,241,.15),transparent)}
     .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.5rem);margin-bottom:1rem;background:linear-gradient(135deg,#fff 40%,var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
     .hero p{color:var(--muted);font-size:1.1rem;max-width:600px;margin:0 auto 2rem}
@@ -39,14 +44,17 @@
     a.cta-link{color:var(--accent2);text-decoration:none;font-weight:600}
     a.cta-link:hover{text-decoration:underline}
     footer{text-align:center;padding:2rem;color:var(--muted);font-size:.85rem;border-top:1px solid var(--border)}
-    @media(max-width:900px){.wrap{grid-template-columns:1fr;padding:1.5rem 1.2rem 4rem}nav{padding:1rem 1.2rem}nav ul{gap:1rem}}
+    @media(max-width:900px){.wrap{grid-template-columns:1fr;padding:1.5rem 1.2rem 4rem}nav{padding:1rem 1.2rem}}
+    @media(max-width:768px){.nav-toggle{display:flex}nav .nav-links{display:none;flex-direction:column;align-items:stretch;width:100%;flex-basis:100%;gap:0;padding:.5rem 0 0;margin-left:0;margin-top:.75rem;border-top:1px solid var(--border)}nav.nav-open .nav-links{display:flex}nav .nav-links li{border-bottom:1px solid rgba(255,255,255,.06)}nav .nav-links li:last-child{border-bottom:none}nav .nav-links a{display:block;padding:.85rem 0}}
   </style>
 </head>
 <body>
-<nav>
-  <div class="logo">&#x1F9E0; BioMind</div>
-  <ul>
-    <li><a href="index.html">Home</a></li>
+<nav id="site-nav">
+  <a href="index.html" class="logo">&#x1F9E0; BioMind</a>
+  <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open menu">
+    <span aria-hidden="true">☰</span>
+  </button>
+  <ul id="primary-navigation" class="nav-links">
     <li><a href="explore.html">Explore</a></li>
     <li><a href="learn.html" class="active">Learn</a></li>
     <li><a href="about.html">About</a></li>
@@ -130,5 +138,28 @@
   </aside>
 </main>
 <footer>&#169; 2026 BioMind. All rights reserved. | An educational resource for curious minds.</footer>
+<script>
+(function () {
+  var nav = document.getElementById('site-nav');
+  var btn = document.getElementById('nav-toggle');
+  var links = document.getElementById('primary-navigation');
+  if (!nav || !btn || !links) return;
+  function setOpen(open) {
+    nav.classList.toggle('nav-open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+  function closeMenu() { setOpen(false); }
+  btn.addEventListener('click', function () {
+    setOpen(!nav.classList.contains('nav-open'));
+  });
+  links.addEventListener('click', function (e) {
+    if (e.target.closest('a')) closeMenu();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeMenu();
+  });
+})();
+</script>
 </body>
 </html>

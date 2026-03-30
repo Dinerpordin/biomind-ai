@@ -30,7 +30,8 @@
     nav {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
       padding: 1.2rem 5%;
       background: rgba(17, 24, 39, 0.85);
       backdrop-filter: blur(12px);
@@ -48,10 +49,63 @@
       -webkit-text-fill-color: transparent;
       text-decoration: none;
     }
-    nav ul { list-style: none; display: flex; gap: 2.5rem; }
-    nav a { color: var(--muted); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
-    nav a:hover, nav a.active { color: var(--text); }
-    nav a.active { color: var(--accent2); border-bottom: 2px solid var(--accent2); padding-bottom: 4px; }
+    .nav-toggle {
+      display: none;
+      margin-left: auto;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface);
+      color: var(--text);
+      font-size: 1.25rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .nav-toggle:hover {
+      border-color: var(--accent);
+      background: var(--card);
+    }
+    .nav-toggle:focus-visible {
+      outline: 2px solid var(--accent2);
+      outline-offset: 3px;
+    }
+    .nav-toggle[aria-expanded="true"] {
+      border-color: var(--accent);
+      background: var(--card);
+    }
+    nav .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+      margin: 0;
+      padding: 0;
+      margin-left: auto;
+      align-items: center;
+    }
+    nav .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+    nav .nav-links a:focus-visible {
+      outline: 2px solid var(--accent2);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+    nav .nav-links a:hover,
+    nav .nav-links a.active { color: var(--text); }
+    nav .nav-links a.active {
+      color: var(--accent2);
+      border-bottom: 2px solid var(--accent2);
+      padding-bottom: 4px;
+    }
 
     /* HERO */
     .hero {
@@ -361,17 +415,42 @@
     .chip:hover { background: rgba(99, 102, 241, 0.25); transform: translateY(-2px); }
 
     @media (max-width: 768px) {
-      nav ul { display: none; }
+      .nav-toggle { display: flex; }
+      nav .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        flex-basis: 100%;
+        gap: 0;
+        padding: 0.5rem 0 0;
+        margin-left: 0;
+        margin-top: 0.75rem;
+        border-top: 1px solid var(--border);
+      }
+      nav.nav-open .nav-links { display: flex; }
+      nav .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.06); }
+      nav .nav-links li:last-child { border-bottom: none; }
+      nav .nav-links a {
+        display: block;
+        padding: 0.85rem 0;
+      }
+      nav .nav-links a.active {
+        border-bottom: none;
+        padding-bottom: 0.85rem;
+      }
       #chat-panel { width: calc(100vw - 2rem); right: 1rem; height: 70vh; }
       .hero h1 { font-size: 2.8rem; }
     }
   </style>
 </head>
 <body>
-  <nav>
+  <nav id="site-nav">
     <a href="index.html" class="logo">🧠 BioMind</a>
-    <ul>
-      <li><a href="index.html">Home</a></li>
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open menu">
+      <span aria-hidden="true">☰</span>
+    </button>
+    <ul id="primary-navigation" class="nav-links">
       <li><a href="explore.html" class="active">Explore</a></li>
       <li><a href="learn.html">Learn</a></li>
       <li><a href="about.html">About</a></li>
@@ -628,6 +707,28 @@
         if (popup) popup.style.opacity = '1';
       }
     }, 4000);
+
+    (function () {
+      var nav = document.getElementById('site-nav');
+      var btn = document.getElementById('nav-toggle');
+      var links = document.getElementById('primary-navigation');
+      if (!nav || !btn || !links) return;
+      function setOpen(open) {
+        nav.classList.toggle('nav-open', open);
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      }
+      function closeMenu() { setOpen(false); }
+      btn.addEventListener('click', function () {
+        setOpen(!nav.classList.contains('nav-open'));
+      });
+      links.addEventListener('click', function (e) {
+        if (e.target.closest('a')) closeMenu();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeMenu();
+      });
+    })();
   </script>
 </body>
 </html>
