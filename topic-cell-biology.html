@@ -25,20 +25,16 @@ nav a.active{color:var(--accent2);border-bottom:2px solid var(--accent2);padding
 .content{max-width:900px;margin:0 auto;padding:0 5% 6rem}
 .section{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2.5rem;margin-bottom:2rem}
 .section h2{font-family:'Playfair Display',serif;font-size:1.8rem;color:#fff;margin-bottom:1.2rem;padding-bottom:.8rem;border-bottom:2px solid var(--accent)}
-.section h3{font-size:1.2rem;font-weight:700;color:var(--accent2);margin:1.5rem 0 .7rem}
+.section h3{font-size:1.05rem;font-weight:700;color:var(--accent2);margin:1.25rem 0 .6rem}
 .section p{color:var(--muted);line-height:1.8;margin-bottom:1rem}
-.section ul{color:var(--muted);line-height:1.9;padding-left:1.5rem}
-.section ul li{margin-bottom:.4rem}
-.ref-box{background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.25);border-radius:12px;padding:2rem;margin-top:1rem}
-.ref-box h3{color:var(--accent2);margin-bottom:1rem;font-size:1.1rem}
-.ref-box ol{padding-left:1.4rem;color:var(--muted);line-height:1.9;font-size:.92rem}
-.ref-box ol li{margin-bottom:.5rem}
-.ref-box a{color:var(--accent2);text-decoration:none}
+.section ul{color:var(--muted);line-height:1.9;padding-left:1.5rem;margin-bottom:1rem}
+.section ul li{margin-bottom:.45rem}
+.ref-box{background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.25);border-radius:12px;padding:1.75rem;margin-top:1.25rem}
+.ref-box h3{color:var(--accent2);margin-bottom:.9rem;font-size:1.05rem}
+.ref-box ul{padding-left:1.25rem;color:var(--muted);line-height:1.85;font-size:.92rem}
+.ref-box ul li{margin-bottom:.55rem}
+.ref-box a{color:var(--accent2);text-decoration:none;word-break:break-word}
 .ref-box a:hover{text-decoration:underline}
-.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1.2rem;margin:1.5rem 0}
-.stat-card{background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2);border-radius:12px;padding:1.2rem;text-align:center}
-.stat-card .num{font-size:2rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.stat-card .lbl{font-size:.85rem;color:var(--muted);margin-top:.3rem}
 footer{text-align:center;padding:3rem 2rem;background:var(--surface);border-top:1px solid var(--border);color:var(--muted)}
 footer strong{color:var(--text)}
 @media(max-width:768px){nav ul{display:none}}
@@ -57,66 +53,33 @@ footer strong{color:var(--text)}
 <section class="hero">
 <span class="hero-tag">Biology</span>
 <h1>Cell Biology</h1>
-<p>Explore the smallest units of life &mdash; how cells function, divide, and interact within complex biological organisms. From organelles to cellular signalling, discover the molecular machinery that sustains all life.</p>
+<p>Cells are the smallest units that carry out the processes we associate with life. This overview explains how membranes compartmentalise chemistry, how organelles collaborate, and why cellular signalling and division matter for health.</p>
 <a class="back-link" href="explore.html">&larr; Back to Explore</a>
 </section>
 <div class="content">
-<div class="stats-grid">
-<div class="stat-card"><div class="num">37T</div><div class="lbl">Cells in the human body</div></div>
-<div class="stat-card"><div class="num">200+</div><div class="lbl">Distinct cell types</div></div>
-<div class="stat-card"><div class="num">3B</div><div class="lbl">DNA base pairs per cell</div></div>
-<div class="stat-card"><div class="num">24h</div><div class="lbl">Typical cell cycle length</div></div>
-</div>
-<div class="section">
-<h2>What Is a Cell?</h2>
-<p>The cell is the fundamental structural and functional unit of all living organisms. First described by Robert Hooke in 1665 and later elaborated through the Cell Theory by Schleiden, Schwann, and Virchow, cells are the building blocks of life. The human body contains approximately 37.2 trillion cells, each performing highly specialised roles.</p>
-<p>Cells are broadly classified into two types: <strong>prokaryotic</strong> (lacking a membrane-bound nucleus, e.g., bacteria) and <strong>eukaryotic</strong> (possessing a nucleus enclosed by a membrane, found in animals, plants, and fungi). Human cells are eukaryotic.</p>
-<h3>Key Organelles and Their Functions</h3>
+<article class="section">
+<h2>Core overview</h2>
+<p>Living organisms are built from one or more cells. In animals, cells share a plasma membrane, a watery cytosol, and (in most human cells) a nucleus that houses DNA. That arrangement separates reactions, stores genetic instructions, and allows groups of cells to specialise into tissues.</p>
+<p>Key membrane-bound compartments (organelles) include mitochondria for energy conversion, the endoplasmic reticulum and Golgi apparatus for synthesis and shipping of proteins and lipids, and lysosomes for degrading worn-out parts. Together they keep metabolism organised.</p>
+</article>
+<article class="section">
+<h2>How it works</h2>
+<p>Cells sense their environment using receptors on the surface or inside the cell. Signals are relayed through molecular pathways that change gene activity, metabolism, or the cytoskeleton. This is how hormones, immune cues, and local neighbour cells coordinate behaviour.</p>
+<p>For growth and repair, many cells progress through a regulated cell cycle. DNA is copied only when checks indicate the genome is intact; then the cell can divide. When cells stop dividing, they often enter specialised states needed for muscle, nerve, or immune function. Disruption of checkpoints can contribute to disease when division runs out of control.</p>
+</article>
+<article class="section">
+<h2>Why it matters</h2>
+<p>Understanding cell biology clarifies how infections hijack cellular machinery, how medicines target specific pathways, and why genetic changes can alter a single cell type with wide effects on the body. It also links basic science to regenerative research and cancer biology, where the goal is to restore normal signalling or stop harmful proliferation.</p>
+<div class="ref-box">
+<h3>References</h3>
 <ul>
-<li><strong>Nucleus:</strong> Contains genetic material (DNA) and controls cellular activities including gene expression and cell reproduction.</li>
-<li><strong>Mitochondria:</strong> The powerhouse of the cell; generates ATP via oxidative phosphorylation. Also involved in apoptosis (programmed cell death).</li>
-<li><strong>Endoplasmic Reticulum (ER):</strong> Rough ER synthesises proteins; smooth ER synthesises lipids and detoxifies chemicals.</li>
-<li><strong>Golgi Apparatus:</strong> Modifies, packages, and distributes proteins and lipids to their destinations.</li>
-<li><strong>Lysosomes:</strong> Digest cellular waste and foreign material using hydrolytic enzymes.</li>
-<li><strong>Ribosomes:</strong> Sites of protein synthesis; translate mRNA into polypeptide chains.</li>
-<li><strong>Cell Membrane:</strong> A phospholipid bilayer that regulates what enters and exits the cell.</li>
-<li><strong>Cytoskeleton:</strong> Provides structural support, enables cell movement, and assists in cell division.</li>
+<li><a href="https://www.ncbi.nlm.nih.gov/books/NBK9839/" target="_blank" rel="noopener noreferrer">Cooper GM. <em>The Cell: A Molecular Approach</em> (NCBI Bookshelf)</a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/books/NBK26869/" target="_blank" rel="noopener noreferrer">Alberts B, et al. <em>Molecular Biology of the Cell</em> &mdash; overview of the cell cycle (NCBI Bookshelf)</a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/books/NBK518839/" target="_blank" rel="noopener noreferrer">National Library of Medicine. Cell biology scope statement (collection development guidelines)</a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/books/NBK554382/" target="_blank" rel="noopener noreferrer">StatPearls. <em>Histology, Cell</em> (NCBI Bookshelf)</a></li>
 </ul>
 </div>
-<div class="section">
-<h2>Cell Division</h2>
-<p>Cells reproduce through two primary mechanisms: <strong>mitosis</strong> (producing two genetically identical daughter cells for growth and repair) and <strong>meiosis</strong> (producing four genetically unique cells for sexual reproduction). Errors in cell division can lead to chromosomal abnormalities or cancer.</p>
-<h3>The Cell Cycle</h3>
-<p>The cell cycle consists of interphase (G1, S, and G2 phases) and the mitotic phase (M phase). During S phase, DNA is replicated. Checkpoints throughout the cycle ensure genomic integrity before the cell proceeds to division. The tumour suppressor protein p53 plays a critical role in these checkpoints.</p>
-<h3>Cancer and Uncontrolled Division</h3>
-<p>When regulatory mechanisms fail, cells can proliferate uncontrollably, forming tumours. Oncogenes promote cell division while tumour suppressor genes inhibit it. Mutations in these genes, whether inherited or acquired, underlie the majority of cancers.</p>
-</div>
-<div class="section">
-<h2>Cellular Communication and Signalling</h2>
-<p>Cells communicate through chemical signals including hormones, neurotransmitters, and cytokines. Signal transduction pathways convert extracellular signals into intracellular responses, often involving cascades of protein phosphorylation. Key pathways include the MAPK/ERK pathway, the PI3K/AKT pathway, and the JAK-STAT pathway.</p>
-<h3>Cell Adhesion and the Extracellular Matrix</h3>
-<p>Cells interact with each other and their surrounding extracellular matrix (ECM) through adhesion molecules such as integrins, cadherins, and selectins. The ECM provides structural support and biochemical cues that regulate cell behaviour including migration, proliferation, and differentiation.</p>
-</div>
-<div class="section">
-<h2>Stem Cells and Differentiation</h2>
-<p>Stem cells are undifferentiated cells capable of self-renewal and differentiation into specialised cell types. <strong>Embryonic stem cells (ESCs)</strong> are pluripotent (can become any cell type), while adult stem cells are multipotent (limited to certain lineages). <strong>Induced pluripotent stem cells (iPSCs)</strong>, discovered by Shinya Yamanaka in 2006, are adult cells reprogrammed back to a pluripotent state, revolutionising regenerative medicine and disease modelling.</p>
-<p>Differentiation is controlled by transcription factors and epigenetic mechanisms including DNA methylation and histone modification. Environmental signals from surrounding cells also guide differentiation through processes like induction.</p>
-</div>
-<div class="section">
-<h2>Cell Biology and Disease</h2>
-<p>Dysfunctions at the cellular level underlie virtually all human diseases. Mitochondrial dysfunction is implicated in neurodegenerative conditions such as Parkinson&rsquo;s and Alzheimer&rsquo;s disease. Lysosomal storage disorders arise from enzyme deficiencies. Defects in the cytoskeleton are associated with muscular dystrophies. Understanding cellular mechanisms has enabled targeted therapies including monoclonal antibodies, CAR-T cell therapy, and CRISPR gene editing.</p>
-<div class="ref-box">
-<h3>References &amp; Further Reading</h3>
-<ol>
-<li>Alberts B, et al. <em>Molecular Biology of the Cell</em>, 6th ed. Garland Science, 2015.</li>
-<li>Bianconi E, et al. An estimation of the number of cells in the human body. <em>Annals of Human Biology</em>. 2013;40(6):463-471. <a href="https://pubmed.ncbi.nlm.nih.gov/23829164/" target="_blank">PubMed</a></li>
-<li>Lodish H, et al. <em>Molecular Cell Biology</em>, 8th ed. W.H. Freeman, 2016.</li>
-<li>Takahashi K, Yamanaka S. Induction of pluripotent stem cells from mouse embryonic and adult fibroblast cultures by defined factors. <em>Cell</em>. 2006;126(4):663-676. <a href="https://pubmed.ncbi.nlm.nih.gov/16904174/" target="_blank">PubMed</a></li>
-<li>National Cancer Institute. <em>The Cell Cycle and Cancer</em>. <a href="https://www.cancer.gov" target="_blank">cancer.gov</a></li>
-<li>NIH National Human Genome Research Institute. <em>Cell Biology</em>. <a href="https://www.genome.gov" target="_blank">genome.gov</a></li>
-</ol>
-</div>
-</div>
+</article>
 </div>
 <footer>
 <p>&copy; 2026 <strong>BioMind</strong>. All rights reserved. | Developed by <strong>Ruponti Rahman</strong></p>

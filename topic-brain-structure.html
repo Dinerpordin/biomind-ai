@@ -25,20 +25,16 @@ nav a.active{color:var(--accent2);border-bottom:2px solid var(--accent2);padding
 .content{max-width:900px;margin:0 auto;padding:0 5% 6rem}
 .section{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2.5rem;margin-bottom:2rem}
 .section h2{font-family:'Playfair Display',serif;font-size:1.8rem;color:#fff;margin-bottom:1.2rem;padding-bottom:.8rem;border-bottom:2px solid var(--accent)}
-.section h3{font-size:1.2rem;font-weight:700;color:var(--accent2);margin:1.5rem 0 .7rem}
+.section h3{font-size:1.05rem;font-weight:700;color:var(--accent2);margin:1.25rem 0 .6rem}
 .section p{color:var(--muted);line-height:1.8;margin-bottom:1rem}
-.section ul{color:var(--muted);line-height:1.9;padding-left:1.5rem}
-.section ul li{margin-bottom:.4rem}
-.ref-box{background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.25);border-radius:12px;padding:2rem;margin-top:1rem}
-.ref-box h3{color:var(--accent2);margin-bottom:1rem;font-size:1.1rem}
-.ref-box ol{padding-left:1.4rem;color:var(--muted);line-height:1.9;font-size:.92rem}
-.ref-box ol li{margin-bottom:.5rem}
-.ref-box a{color:var(--accent2);text-decoration:none}
+.section ul{color:var(--muted);line-height:1.9;padding-left:1.5rem;margin-bottom:1rem}
+.section ul li{margin-bottom:.45rem}
+.ref-box{background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.25);border-radius:12px;padding:1.75rem;margin-top:1.25rem}
+.ref-box h3{color:var(--accent2);margin-bottom:.9rem;font-size:1.05rem}
+.ref-box ul{padding-left:1.25rem;color:var(--muted);line-height:1.85;font-size:.92rem}
+.ref-box ul li{margin-bottom:.55rem}
+.ref-box a{color:var(--accent2);text-decoration:none;word-break:break-word}
 .ref-box a:hover{text-decoration:underline}
-.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1.2rem;margin:1.5rem 0}
-.stat-card{background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2);border-radius:12px;padding:1.2rem;text-align:center}
-.stat-card .num{font-size:2rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.stat-card .lbl{font-size:.85rem;color:var(--muted);margin-top:.3rem}
 footer{text-align:center;padding:3rem 2rem;background:var(--surface);border-top:1px solid var(--border);color:var(--muted)}
 footer strong{color:var(--text)}
 @media(max-width:768px){nav ul{display:none}}
@@ -57,60 +53,30 @@ footer strong{color:var(--text)}
 <section class="hero">
 <span class="hero-tag">Neuroscience</span>
 <h1>Brain Structure</h1>
-<p>Discover the specialised regions of the human brain and their critical roles in processing behaviour, sensation, and thought. From the ancient brainstem to the uniquely human prefrontal cortex, explore the architecture of consciousness.</p>
+<p>The brain is organised into large regions with specialised roles, yet behaviour emerges from distributed networks rather than single &ldquo;switches.&rdquo; Knowing the cerebrum, cerebellum, and brainstem frames how scientists study perception, movement, and regulation.</p>
 <a class="back-link" href="explore.html">&larr; Back to Explore</a>
 </section>
 <div class="content">
-<div class="stats-grid">
-<div class="stat-card"><div class="num">86B</div><div class="lbl">Neurons in the brain</div></div>
-<div class="stat-card"><div class="num">1.4kg</div><div class="lbl">Average brain weight</div></div>
-<div class="stat-card"><div class="num">100T</div><div class="lbl">Synaptic connections</div></div>
-<div class="stat-card"><div class="num">20%</div><div class="lbl">Body energy used by brain</div></div>
-</div>
-<div class="section">
-<h2>Overview of Brain Organisation</h2>
-<p>The human brain is the most complex biological structure known, weighing approximately 1.4 kg and containing roughly 86 billion neurons interconnected by an estimated 100 trillion synaptic connections. It is divided into three major parts: the <strong>forebrain</strong> (cerebrum and diencephalon), the <strong>midbrain</strong>, and the <strong>hindbrain</strong> (cerebellum, pons, and medulla oblongata).</p>
-<h3>Cerebral Cortex</h3>
-<p>The cerebral cortex is the outermost layer of the cerebrum, consisting of grey matter (neuronal cell bodies) organised into six layers. It is divided into four lobes in each hemisphere: frontal, parietal, temporal, and occipital. The cortex is responsible for higher cognitive functions including language, reasoning, perception, and voluntary movement.</p>
-</div>
-<div class="section">
-<h2>The Four Lobes</h2>
-<ul>
-<li><strong>Frontal Lobe:</strong> Houses the primary motor cortex (controlling voluntary movement), Broca&rsquo;s area (speech production), and the prefrontal cortex (executive function, working memory, decision-making, and personality). Damage leads to personality changes, impaired planning, and motor deficits.</li>
-<li><strong>Parietal Lobe:</strong> Contains the primary somatosensory cortex, which processes touch, proprioception, and pain. Also involved in spatial reasoning and integration of sensory information. The homunculus maps body regions to cortical areas by sensitivity.</li>
-<li><strong>Temporal Lobe:</strong> Processes auditory information, language comprehension (Wernicke&rsquo;s area), and memory consolidation (via the hippocampus). The inferior temporal cortex is critical for face and object recognition.</li>
-<li><strong>Occipital Lobe:</strong> The primary visual cortex (V1) receives raw visual input from the retina via the thalamus. Higher visual areas (V2&ndash;V5) process motion, colour, depth, and object identity.</li>
-</ul>
-</div>
-<div class="section">
-<h2>Deep Brain Structures</h2>
-<h3>The Limbic System</h3>
-<p>The limbic system is a set of interconnected structures that regulate emotion, memory, and motivation. Key components include:</p>
-<ul>
-<li><strong>Hippocampus:</strong> Critical for forming new explicit (declarative) memories and spatial navigation. Severely damaged in Alzheimer&rsquo;s disease.</li>
-<li><strong>Amygdala:</strong> Processes fear and emotional responses; involved in attaching emotional significance to memories. Hyperactivity is associated with anxiety disorders and PTSD.</li>
-<li><strong>Hypothalamus:</strong> Regulates homeostatic functions including hunger, thirst, temperature, circadian rhythms, and hormonal output via the pituitary gland.</li>
-<li><strong>Thalamus:</strong> The brain&rsquo;s relay station; routes sensory information (except olfaction) to appropriate cortical areas.</li>
-</ul>
-<h3>Basal Ganglia</h3>
-<p>The basal ganglia are a group of subcortical nuclei (including the striatum, globus pallidus, substantia nigra, and subthalamic nucleus) that modulate movement, procedural learning, and habit formation. Degeneration of dopaminergic neurons in the substantia nigra causes Parkinson&rsquo;s disease; dysfunction of the striatum is implicated in Huntington&rsquo;s disease and addiction.</p>
-<h3>Cerebellum</h3>
-<p>The cerebellum accounts for only ~10% of brain volume but contains approximately 50% of all neurons. It coordinates movement, balance, and fine motor skills, and is increasingly recognised as involved in cognitive and emotional processing. Cerebellar damage causes ataxia (loss of coordination).</p>
-</div>
-<div class="section">
-<h2>The Brainstem</h2>
-<p>The brainstem (midbrain, pons, and medulla oblongata) connects the cerebrum to the spinal cord and controls vital autonomic functions including respiration, heart rate, blood pressure, and consciousness. The reticular activating system (RAS) within the brainstem regulates arousal and sleep-wake transitions. Cranial nerves III&ndash;XII originate in the brainstem.</p>
+<article class="section">
+<h2>Core overview</h2>
+<p>The cerebrum includes the cerebral cortex and underlying white matter. Cortical lobes&mdash;frontal, parietal, temporal, and occipital&mdash;are a practical map for localising functions such as planning, body sensation, hearing and language-related processing, and vision. Beneath the cortex, structures like the thalamus and basal ganglia participate in routing signals and shaping action.</p>
+<p>The cerebellum fine-tunes movement and contributes to some forms of learning. The brainstem connects the spinal cord to higher centers and supports breathing, heart rate, and arousal. Together these levels link voluntary behaviour with basic life support.</p>
+</article>
+<article class="section">
+<h2>How it works</h2>
+<p>Sensory pathways typically pass through brainstem and thalamic stations before reaching cortical areas that integrate context and guide responses. Motor plans descend from cortex and basal ganglia circuits to brainstem and spinal outputs. Limbic-related regions (for example, hippocampus and amygdala) interact closely with cortical systems in memory and emotional processing.</p>
+<p>Modern imaging highlights coordinated activity across regions, stressing networks over isolated labels. Damage or disease in a small area can have wide effects because pathways are highly interconnected.</p>
+</article>
+<article class="section">
+<h2>Why it matters</h2>
+<p>Maps of brain structure help clinicians localise problems, frame recovery expectations, and communicate about symptoms. For learners, they provide a scaffold for more advanced topics such as neuroplasticity, sleep, and mental health&mdash;always remembering that structure is one part of a dynamic, changing system.</p>
 <div class="ref-box">
-<h3>References &amp; Further Reading</h3>
-<ol>
-<li>Kandel ER, et al. <em>Principles of Neural Science</em>, 6th ed. McGraw-Hill, 2021.</li>
-<li>Azevedo FAC, et al. Equal numbers of neuronal and nonneuronal cells make the human brain an isometrically scaled-up primate brain. <em>J Comp Neurol</em>. 2009;513(5):532-41. <a href="https://pubmed.ncbi.nlm.nih.gov/19226510/" target="_blank">PubMed</a></li>
-<li>Purves D, et al. <em>Neuroscience</em>, 6th ed. Sinauer Associates, 2018.</li>
-<li>Bear MF, Connors BW, Paradiso MA. <em>Neuroscience: Exploring the Brain</em>, 4th ed. Wolters Kluwer, 2016.</li>
-<li>NIH National Institute of Neurological Disorders and Stroke. <em>Brain Basics</em>. <a href="https://www.ninds.nih.gov/health-information/public-education/brain-basics" target="_blank">ninds.nih.gov</a></li>
-</ol>
+<h3>References</h3>
+<ul>
+<li><a href="https://www.nimh.nih.gov/news/media/2023/get-to-know-your-brain" target="_blank" rel="noopener noreferrer">NIMH: Get to know your brain</a></li>
+</ul>
 </div>
-</div>
+</article>
 </div>
 <footer>
 <p>&copy; 2026 <strong>BioMind</strong>. All rights reserved. | Developed by <strong>Ruponti Rahman</strong></p>
