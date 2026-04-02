@@ -1,24 +1,20 @@
 {
-  "redirects": [
-    {
-      "source": "/app/",
-      "destination": "/",
-      "permanent": false
-    }
-  ],
-  "rewrites": [
-    { "source": "/", "destination": "/explore.html" },
-    {
-      "source": "/app/((?!assets/|sw\\.js|workbox|registerSW|manifest\\.webmanifest|pwa-icon).*)",
-      "destination": "/app/index.html"
-    }
-  ],
   "headers": [
     {
       "source": "/app/sw.js",
       "headers": [
         { "key": "Service-Worker-Allowed", "value": "/" }
       ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/app/:path*",
+      "destination": "/app/index.html"
+    },
+    {
+      "source": "/",
+      "destination": "/explore.html"
     }
   ]
 }
