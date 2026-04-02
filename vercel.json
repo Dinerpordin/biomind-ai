@@ -1,5 +1,13 @@
 {
   "rewrites": [
     { "source": "/", "destination": "/explore.html" }
+  ],
+  "headers": [
+    {
+      "source": "/app/sw.js",
+      "headers": [
+        { "key": "Service-Worker-Allowed", "value": "/" }
+      ]
+    }
   ]
 }

@@ -9,7 +9,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="BioMind" />
   <meta name="description" content="Explore topics about the human body and mind" />
-  <link rel="manifest" href="manifest.json" />
+  <link rel="manifest" href="/app/manifest.webmanifest" />
   <link rel="apple-touch-icon" href="icon-192.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -801,6 +801,7 @@
       var iosHint = document.getElementById('pwa-ios-hint');
       if (!wrap || !installBtn || !iosHint) return;
 
+      // Hide the install UI if already running as a standalone app
       var standalone =
         window.matchMedia('(display-mode: standalone)').matches ||
         window.navigator.standalone === true;
@@ -831,19 +832,21 @@
         iosHint.hidden = true;
         installBtn.setAttribute('aria-expanded', 'false');
         if (!deferredPrompt) {
-          window.alert(
-            'Install isn’t available in this browser window. Try Google Chrome on Android (look for “Install app” in the menu), Microsoft Edge, or on iPhone/iPad use Safari: tap Share → Add to Home Screen.'
-          );
+          // Fallback: open the /app/ page directly so the user can install from there
+          window.open('/app/', '_blank');
           return;
         }
         deferredPrompt.prompt();
         deferredPrompt.userChoice.finally(function () {
           deferredPrompt = null;
+          wrap.classList.add('pwa-hidden');
         });
       });
 
+      // Register the /app/ service worker from this page so the install prompt
+      // can fire correctly for the /app/ PWA
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('sw.js').catch(function () {});
+        navigator.serviceWorker.register('/app/sw.js', { scope: '/app/' }).catch(function () {});
       }
     })();
 
