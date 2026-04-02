@@ -833,7 +833,7 @@
         installBtn.setAttribute('aria-expanded', 'false');
         if (!deferredPrompt) {
           // Fallback: open the /app/ page directly so the user can install from there
-          window.open('/app/', '_blank');
+          window.open('/', '_blank');
           return;
         }
         deferredPrompt.prompt();
@@ -846,7 +846,7 @@
       // Register the /app/ service worker from this page so the install prompt
       // can fire correctly for the /app/ PWA
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/app/sw.js', { scope: '/app/' }).catch(function () {});
+        navigator.serviceWorker.register('/app/sw.js', { scope: '/' }).catch(function () {});
       }
     })();
 
