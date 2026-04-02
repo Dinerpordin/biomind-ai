@@ -1,6 +1,10 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/explore.html" }
+    { "source": "/", "destination": "/explore.html" },
+    {
+      "source": "/app/((?!assets/|sw\\.js|workbox|registerSW|manifest\\.webmanifest|pwa-icon).*)",
+      "destination": "/app/index.html"
+    }
   ],
   "headers": [
     {
