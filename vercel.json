@@ -2,19 +2,13 @@
   "headers": [
     {
       "source": "/app/sw.js",
-      "headers": [
-        { "key": "Service-Worker-Allowed", "value": "/" }
-      ]
+      "headers": [{ "key": "Service-Worker-Allowed", "value": "/" }]
     }
   ],
   "rewrites": [
     {
-      "source": "/app/:path*",
+      "source": "/((?!explore\\.html|learn\\.html|about\\.html|topic-|app/assets/|app/sw\\.js|app/workbox|app/registerSW|app/manifest|app/pwa-icon|app/index\\.html).*)",
       "destination": "/app/index.html"
-    },
-    {
-      "source": "/",
-      "destination": "/explore.html"
     }
   ]
 }
